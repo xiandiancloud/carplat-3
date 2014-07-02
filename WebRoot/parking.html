@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>停车场管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="css/base.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+	<div class="content">
+		<div class="contentwrap">
+
+			<div class="top">
+				<div class="header png_bg">
+					<div class="logo"><a href="" id="logo"><img src="images/logo.png"/></a></div>
+					<div class="login"> 						
+					   <div class="loginwrap">
+							<div class="inputwrap">
+								<a><img src="" id="userimg"  width="50px"/></a>
+								<a id="username"></a>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="dhlnav menu" id="nav">
+						<ul class="dhlnav">			            
+				            <li id="clgl"><a href="" id="clli">车辆管理</a></li>
+				            <li id="crgl"><a  href="" id="crli">出入管理</a></li>
+				            <li class="dhlactive" id="dcgl"><a id="dcli">停车场管理</a></li>
+			        	</ul>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div class="flash">
+					<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"  width="1050" height="405" align="center">
+						<param name="movie" value="flash/index.swf">
+						<param name="quality" value="high">
+						<param name="wmode" value="transparent">
+						<embed src="flash/index.swf"  wmode="transparent"  width="1050" height="405" align="center" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+					</object>
+				</div>
+			</div>
+
+			<div class="conmain  png_bg">
+				<div class="contentTop">
+					<div class="contentTopLeft">
+						<div id="scrollWrap"> 
+							<ul id="scrollMsg"> 
+								<li><a class="msgtip" href="#">停车场管理</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="copyright"><h1>车位统计</h1></div>
+				<table class="table table-striped table-bordered table-hover" id="signal"></table>
+				<div class="copyright"><h1>地下停车场示意图</h1></div>
+				<div><img src="images/down.png" class="img-polaroid w1024"></div>			
+ 				<div id="downcar">
+ 					<!-- <img src="images/car.png" style="position:absolute;margin-left: 100px;margin-top: -100px;">
+ 					<img src="images/car.png" style="position:absolute;margin-left: 200px;margin-top: -200px;"> -->
+ 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		<div class="footerCon">
+			<div class="copyright">
+				<p>版权所有：无锡旅游商贸高等职业技术学校   COPYRIGHT © 2010 ALL RIGHTS RESERVED </p>
+				<p>地址：无锡市广石路999号 <span>电话：0510-83116678</span>    <span> 苏ICP备:09007163</span>技术支持：南京第五十五所技术开发有限公司</p>
+			</div>
+			<div class="logobottom">
+				<img src="images/logobottom.gif"/>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</body>
+<!-- <script type="text/javascript">
+	$(function(){
+		var schoolnews = $("#schoolnews");
+		schoolnews.find(".title span").mouseenter(function(){
+			if(!$(this).hasClass()){
+				$(this).addClass("now");
+				$(this).siblings("span").removeClass("now");
+				a_now = $(this).siblings("a.now");
+				a_now.removeClass("now");
+				a_now.siblings("a").addClass("now");
+				schoolnews.find(".schoolnews_content").toggle();
+			}
+		});
+	});
+</script> -->
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bootstrap/js/jquery-1.9.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jBootstrapPage.js"></script>
+    <script src="js/fineuploader.js"></script>
+    <script src="js/bootstrap-datepicker.js" ></script>
+    <script src="js/common.js" ></script>
+    
+<script type="text/javascript">
+		$(document).ready(function() {
+			var array = parseUrl();
+	    	var b = array[0];
+	    	
+	    	if ("admin" == b)
+	    	{	    	
+		    	$("#logo").attr("href","/carplat/");
+	    		$("#crli").attr("href","/carplat/inout.html");
+	    		$("#clli").attr("href","/carplat/");	 	    
+	    		$("#dcli").attr("href","/carplat/parking.html");
+	    		
+		    	$("#username").html("管理员");	    	
+		    	$("#userimg").attr("src","images/user.png");
+	    	}
+	    	else
+	    	{
+		    	var role = array[1];		    	
+		    	$("#logo").attr("href","/carplat/index.html?"+b);
+	    		$("#crli").attr("href","/carplat/inout.html?"+b);
+	    		$("#clli").attr("href","/carplat/index.html?"+b);
+	    		$("#dcli").attr("href","/carplat/parking.html?"+b);
+		    	//管理员
+		    	if (role == 0)
+		    	{
+		    		$("#crgl").show();
+		    	}
+		    	else// if (role == 1)
+		    	{		    		
+		    		$("#crgl").hide();
+		    	}   
+		    	var username = array[2];
+		    	$("#username").html(username);	    	
+		    	$("#userimg").attr("src",array[3]);
+	    	}
+	    	 	    	
+			initCount();
+		});
+		
+	    function initCount()
+	    {
+	    	$.ajax({				
+				url:"getAllPark.action",
+				type:"post",
+				success:function(s){
+					var a=eval("("+s+")");
+					if (a)
+					{						
+						var t = '<tr><th>停车场位置</th><th>车位总数</th><th>剩余车位</th></tr>';
+						for(var i=0;i<a.rows.length;i++){
+								var b = a.rows[i];
+			    				t += '<tr><td>'+b.pos+'</td><td>'+b.allcount+'</td><td>'+b.left+'</td></tr>';
+			    				if (b.pos == '地下')
+			    				{
+			    					var imgt = '';
+			    					var myobj=eval(b.info);
+			    					for(var i=0;i<myobj.length;i++){
+			    						if (myobj[i].having == 1)
+			    						{
+			    							var carpos = myobj[i].pos;
+			    							var obj = getPos(carpos);
+			    							var imgs = "images/car.png";
+			    							if (carpos == 3 || carpos == 4 || carpos == 5 || carpos == 6 || carpos == 7 || carpos == 50)
+		    								{
+			    								imgs = "images/carside.png";		
+		    								}
+			    							else if (carpos == 48 || carpos == 49)
+		    								{
+			    								//imgs = "images/carrotate.png";	
+		    								}
+			    							imgt += '<img src="'+imgs+'" style="position:absolute;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
+			    						}
+			    					}
+			    					$("#downcar").html(imgt);
+			    				}
+							}							
+						$("#signal").html(t);		
+					}
+				}
+				});
+	    }
+</script>

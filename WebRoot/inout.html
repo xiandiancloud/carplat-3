@@ -13,55 +13,15 @@
         <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
         <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <link href="css/style.css" rel="stylesheet">
     <link href="css/jBootsrapPage.css" rel="stylesheet"/>
     <link href="css/fineuploader.css" rel="stylesheet"/>
     <link href="css/datepicker.css" rel="stylesheet"/>
+    
+    <link href="css/base.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
   </head>
   <body>
-<div class="container">
-    <!-- <div class="row">
-		 <div class="span12 top">
-	 	    <div class="row">
-				 <div class="span7"></div>
-		        <div class="span5">
-		           <form class="navbar-search form-search">
-							      		<div class="input-append">
-							      		<input type="text" class="search-query searchw"/>
-							      		<button type="submit" class="btn">搜索</button>
-							      		</div>
-							      	</form> 							      	
-		        </div>
-		        <div class="span12 h5"></div>
-		    </div>
-		 </div>
-    </div>
-    <div class="row">
-		 <div class="span12">
-	 	    <div class="row">
-	 	    	 <div class="span1"></div>
-				 <div class="span3"><h3 class="hcol">车辆管理系统</h3></div>
-				 <div class="span2"></div>
-				 <div class="span6">
-					 <div class="navbar top15">
-			           	navbar-inner
-				           	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						        <span class="icon-bar"></span>
-						        <span class="icon-bar"></span>
-						      </a>
-						      <div class="nav-collapse collapse">
-						        <ul class="nav">
-							      <li class="btn-warning"><a href="/carplat">出入管理</a></li>
-							      <li ><a href="/carplat/car.html">车辆管理</a></li>
-							    </ul>
-						      </div>
-					</div>
-				 </div>
-				 
-		    </div>
-		 </div>
-    </div> -->
-    
+<!-- <div class="container">
     <div class="row top">
     	<div class="span1"></div>
     	<div class="span10">
@@ -76,10 +36,10 @@
 				        <span class="icon-bar"></span>
 				      </a>
 				      <div class="nav-collapse collapse">
-				      <!--   <ul class="nav">					   
+				        <ul class="nav">					   
 					      <li class="current" id="crgl"><a href="" id="crli">出入管理</a></li>
 					      <li id="clgl"><a href="" id="clli">车辆管理</a></li>
-					    </ul> -->
+					    </ul>
 					    <ul class="nav pull-right">
 					      <li><a><img src="" id="userimg"/></a></li>
 					      <li><a id="username"></a></li>
@@ -92,17 +52,9 @@
    		</div>
    		<div class="span1"></div>
     </div>
-    <!-- <div class="row">
-    <div class="span12 split"></div>
-    </div>
-    <div class="row ">
-    <div class="span12 h100"></div>
-    </div> -->
     <div class="row">
 		 <div class="span12 thumbnail noborder">
 				<div class="flash">
-					<!-- <img src="images/flash.png" class="png_bg"/> -->
-					
 					<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"  width="1050" height="405" align="center">
 						<param name="movie" value="flash/index.swf">
 						<param name="quality" value="high">
@@ -110,25 +62,6 @@
 						<embed src="flash/index.swf"  wmode="transparent"  width="1050" height="405" align="center" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
 					</object>
 				</div>
-	 	    <!-- <div class="row">
-				 <div class="span1"></div>
-				 <div class="span3 h280">
-				 	<div class="row">
-				 		<div class="span3">
-					 		<div class="h180 topc">
-					 			<div class="row">
-					 				<div class="span3 h40"></div>
-					 				<div class="span3 textcenter"><h3>剩余车位</h3></div>
-					 				
-					 				<div class="span3 textcenter"><h3>25</h3></div>
-					 			</div>
-					 		</div>
-					 		<div class="h100 hcol"></div>
-				 		</div>
-				 	</div>
-				 </div>
-				 <div class="span8"></div>
-		    </div> -->
 		 </div>
     </div>
     
@@ -199,16 +132,6 @@
 		 </div>
 		 <div class="span1"></div>
     </div>
-    
-<!--      <div class="row" id="footer">
-	    <div class="span12 h20"></div>
-	    <div class="span12 split"></div>
-	    <div class="span12 h5"></div>
-        <div class="span12 footer">
-          <h4>无锡旅游商贸高等职业技术学校 2014</h4>
-        </div>  
-      </div> -->
-
 </div>
 
                   	<div class="footer">
@@ -222,7 +145,107 @@
 			</div>
 			<div class="clear"></div>
 		</div>
+	</div> -->
+	
+	<div class="content">
+		<div class="contentwrap">
+
+			<div class="top">
+				<div class="header png_bg">
+					<div class="logo"><a href="" id="logo"><img src="images/logo.png"/></a></div>
+					<div class="login"> 						
+					   <div class="loginwrap">
+							<div class="inputwrap">
+								<a><img src="" id="userimg"  width="50px"/></a>
+								<a id="username"></a>
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="dhlnav menu" id="nav">
+						<ul class="dhlnav">			            
+				            <li id="clgl"><a href="" id="clli">车辆管理</a></li>
+				            <li class="dhlactive" id="crgl"><a  href="" id="crli">出入管理</a></li>
+				            <li id="dcgl"><a id="dcli">停车场管理</a></li>
+			        	</ul>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div class="flash">
+					<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"  width="1050" height="405" align="center">
+						<param name="movie" value="flash/index.swf">
+						<param name="quality" value="high">
+						<param name="wmode" value="transparent">
+						<embed src="flash/index.swf"  wmode="transparent"  width="1050" height="405" align="center" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+					</object>
+				</div>
+			</div>
+
+			<div class="conmain  png_bg">
+				<div class="contentTop">
+					<div class="contentTopLeft">
+						<div id="scrollWrap"> 
+							<ul id="scrollMsg"> 
+								<li><a class="msgtip" href="#">出入管理</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="h10"></div>
+		 		<div class="copyright"><h1>出入统计</h1></div>
+				<div class="logobottom">
+					<table>
+					<tr>
+					<td>从&nbsp;</td>
+					<td>
+						<div class="input-append date dhltablediv" id="date" data-date="" data-date-format="yyyy-mm-dd">
+						    <input class="span2" size="16" type="text" value="" readonly>
+						    <span class="add-on"><i class="icon-calendar"></i></span>
+						</div>
+					</td>
+					<td>&nbsp;至&nbsp;</td>
+					<td>
+						<div class="input-append date dhltablediv" id="outdate" data-date="" data-date-format="yyyy-mm-dd">
+						    <input class="span2" size="16" type="text" value="" readonly>
+						    <span class="add-on"><i class="icon-calendar"></i></span>
+						</div>
+					</td>
+					<td>&nbsp;&nbsp;</td>
+					<td>
+					<button id="signalbutton" class="btn btn-warning"><i class="icon-signal"></i>统计</button>								
+					</td>
+					</tr>
+					</table>							
+				</div>
+				<table class="table table-striped table-bordered table-hover" id="signal"></table>
+				<div class="clear"></div>
+				<div class="copyright"><h1>出入详情</h1></div>	
+				<div class="clear"></div>
+				<ul class="nav nav-tabs" id="litab">
+					        <li class="active"><a href="javascript:void(0)">进入</a></li>
+					        <li><a href="javascript:void(0)">离开</a></li>
+					    </ul>
+			 			<table class="table table-striped table-bordered table-hover" id="cartable"></table>
+			 			<ul class="pagination"></ul>
+			</div>
+		</div>
 	</div>
+
+	<div class="footer">
+		<div class="footerCon">
+			<div class="copyright">
+				<p>版权所有：无锡旅游商贸高等职业技术学校   COPYRIGHT © 2010 ALL RIGHTS RESERVED </p>
+				<p>地址：无锡市广石路999号 <span>电话：0510-83116678</span>    <span> 苏ICP备:09007163</span>技术支持：南京第五十五所技术开发有限公司</p>
+			</div>
+			<div class="logobottom">
+				<img src="images/logobottom.gif"/>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="bootstrap/js/jquery-1.9.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -250,7 +273,8 @@
 		    	$("#logo").attr("href","/carplat/");
 	    		$("#crli").attr("href","/carplat/inout.html");
 	    		$("#clli").attr("href","/carplat/");	 	    
-		    	
+	    		$("#dcli").attr("href","/carplat/parking.html");
+	    		
 		    	$("#username").html("管理员");	    	
 		    	$("#userimg").attr("src","images/user.png");
 	    	}
@@ -259,9 +283,18 @@
 		    	var role = array[1];		    	
 		    	$("#logo").attr("href","/carplat/index.html?"+b);
 	    		$("#crli").attr("href","/carplat/inout.html?"+b);
-	    		$("#clli").attr("href","/carplat/index.html?"+b);	 
+	    		$("#clli").attr("href","/carplat/index.html?"+b);	
+	    		$("#dcli").attr("href","/carplat/parking.html?"+b);
+	    		if (role == 0)
+		    	{
+		    		$("#crgl").show();
+		    	}
+		    	else// if (role == 1)
+		    	{		    		
+		    		$("#crgl").hide();
+		    	}   
 		    	//管理员
-		    	if (role == 1)//教师
+		    	/* if (role == 1)//教师
 		    	{	    		
 		    		$("#signalcontent").hide();
 					$("#footer").hide();
@@ -271,7 +304,7 @@
 		    		$("#signalcontent").hide();
 					$("#footer").hide();	
 					$("#clgl").hide();
-		    	}
+		    	} */
 		    	var username = array[2];
 		    	$("#username").html(username);	    	
 		    	$("#userimg").attr("src",array[3]);
