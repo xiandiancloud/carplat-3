@@ -140,7 +140,7 @@ public class TmpCarController {
 			buffer.append(",\"code\":");
 			buffer.append("\"" + UtilTools.getNumber("F", p.getId()) + "\"");
 			buffer.append(",\"card\":");
-			buffer.append("\"" + p.getCard() + "\"");		
+			buffer.append("\"" + p.getCard().trim() + "\"");		
 			buffer.append(",\"caruser\":");
 			buffer.append("\"" + p.getCaruser() + "\"");
 			buffer.append(",\"address\":");

@@ -119,7 +119,7 @@ public class CarInOutViewController {
 			buffer.append("\"id\":");
 			buffer.append("\"" + p.getId() + "\"");
 			buffer.append(",\"card\":");
-			buffer.append("\"" + p.getCard() + "\"");
+			buffer.append("\"" + p.getCard().trim() + "\"");
 			buffer.append(",\"status\":");
 			buffer.append("\"" + p.getStatus() + "\"");
 			buffer.append(",\"indate\":");

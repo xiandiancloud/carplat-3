@@ -72,6 +72,10 @@ public class UploadController {
 					out.print("{\"success\": \"false\"}");
 					return;
 				}
+				if (strs != null && strs[0] != null && strs[0].substring(0,1).equals("#"))
+				{
+					continue;
+				}
 				caseService.save(strs);
 //				while (st.hasMoreTokens()) { 
 //				// 每一行的多个字段用TAB隔开表示 

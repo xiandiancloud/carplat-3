@@ -44,7 +44,7 @@ public class CarController {
 			{
 				list = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE);
 			}
-			else if (role == CommonConstant.TEARCHER_ROLE)
+			else// if (role == CommonConstant.TEARCHER_ROLE)
 			{
 				list = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE, username);
 			}
@@ -147,7 +147,7 @@ public class CarController {
 			buffer.append(",\"code\":");
 			buffer.append("\"" + UtilTools.getNumber("C", p.getId()) + "\"");
 			buffer.append(",\"card\":");
-			buffer.append("\"" + p.getCard() + "\"");
+			buffer.append("\"" + p.getCard().trim() + "\"");
 			buffer.append(",\"caruser\":");
 			buffer.append("\"" + p.getCaruser() + "\"");
 			buffer.append(",\"carposition\":");
