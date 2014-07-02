@@ -1,0 +1,22 @@
+body {font:12px/1.5 '宋体',Arial,sans-serif;}
+html, legend {background:none repeat scroll 0 0 #FFFFFF; color:#000;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {margin:0; padding:0;}
+table {border-collapse:collapse; border-spacing:0;}
+fieldset, img {border:medium none;}
+li {list-style:none outside none;}
+a{text-decoration:none;}
+caption, th {text-align:left; font-weight:normal;}
+h1, h2, h3, h4, h5, h6 {font-size:100%;}
+select, input, button, textarea {font:100% Tahoma,Helvetica,Arial,sans-serif;}
+small {font-size:100%;}
+del {text-decoration:line-through;}
+em {font-style:normal;}
+hr {background-color:#DEDEDE; border:medium none; color:#DEDEDE; min-height:1px;}
+html {overflow-y:auto;}
+/*.clear:after {content:"."; display:block; height:0; line-height:0; overflow:hidden; clear:both; visibility:hidden;}*/
+.clear{clear:both;width:0;height:0; _display:inline; overflow:hidden; font-size:0;}
+.dhlhide{display:none;}
+.h10{height:10px;}
+.rcol{font-size:18px; color: red;}
+.dhltablediv{margin-top: 9px;}
+.w1024{width:1024px;}
