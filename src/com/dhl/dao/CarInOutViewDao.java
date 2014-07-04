@@ -26,7 +26,7 @@ public class CarInOutViewDao extends BaseDao<CarInOutView> {
 			outdate = adates;
 		}
 		String str = status == 0 ? CommonConstant.CAR_STATUS1:CommonConstant.CAR_STATUS2;
-		String hql = "from CarInOutView where indate < '"+outdate+"' and indate >= '"+indate+"' and status = '"+str+"' order by id desc";
+		String hql = "from CarInOutView where indate < '"+outdate+"' and indate >= '"+indate+"' and status = '"+str+"' order by indate desc";
 //		String hql = "from CarInOutView where indate < '2024-06-08' and status = '"+str+"'";
 		return pagedQuery(hql, pageNo, pageSize);
 	}
