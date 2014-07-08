@@ -71,27 +71,27 @@ function getPos(index){
 	if (index == 3)
 	{
 		myObj.left = 320;
-		myObj.top = -622;
+		myObj.top = -615;
 	}
 	if (index == 4)
 	{
 		myObj.left = 240;
-		myObj.top = -622;
+		myObj.top = -615;
 	}
 	if (index == 5)
 	{
 		myObj.left = 150;
-		myObj.top = -622;
+		myObj.top = -615;
 	}
 	if (index == 6)
 	{
 		myObj.left = 70;
-		myObj.top = -622;
+		myObj.top = -615;
 	}
 	if (index == 7)
 	{
 		myObj.left = -10;
-		myObj.top = -622;
+		myObj.top = -615;
 	}
 	if (index == 8)
 	{
@@ -305,8 +305,8 @@ function getPos(index){
 	}
 	else if(index == 50)
 	{
-		myObj.left = 330;
-		myObj.top = -360;
+		myObj.left = 335;
+		myObj.top = -352;
 	}
 	return myObj;
 }
