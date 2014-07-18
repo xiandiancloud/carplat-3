@@ -155,12 +155,12 @@ function getPos(index){
 	}
 	else if(index == 20)
 	{
-		myObj.left = -60;
+		myObj.left = -55;
 		myObj.top = -460;
 	}
 	else if(index == 21)
 	{
-		myObj.left = -25;
+		myObj.left = -23;
 		myObj.top = -460;
 	}
 	else if(index == 22)
@@ -185,12 +185,12 @@ function getPos(index){
 	}
 	else if(index == 26)
 	{
-		myObj.left = 205;
+		myObj.left = 210;
 		myObj.top = -460;
 	}
 	else if(index == 27)
 	{
-		myObj.left = 205;
+		myObj.left = 210;
 		myObj.top = -390;
 	}
 	else if(index == 28)
@@ -215,12 +215,12 @@ function getPos(index){
 	}
 	else if(index == 32)
 	{
-		myObj.left = -25;
+		myObj.left = -23;
 		myObj.top = -390;
 	}
 	else if(index == 33)
 	{
-		myObj.left = -60;
+		myObj.left = -55;
 		myObj.top = -390;
 	}
 	else if(index == 34)
@@ -265,12 +265,12 @@ function getPos(index){
 	}
 	else if(index == 42)
 	{
-		myObj.left = -330;
+		myObj.left = -325;
 		myObj.top = -150;
 	}
 	else if(index == 43)
 	{
-		myObj.left = -295;
+		myObj.left = -290;
 		myObj.top = -150;
 	}
 	else if(index == 44)
@@ -280,12 +280,12 @@ function getPos(index){
 	}
 	else if(index == 45)
 	{
-		myObj.left = -180;
+		myObj.left = -175;
 		myObj.top = -150;
 	}
 	else if(index == 46)
 	{
-		myObj.left = -40;
+		myObj.left = -35;
 		myObj.top = -150;
 	}
 	else if(index == 47)
