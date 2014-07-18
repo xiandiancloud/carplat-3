@@ -174,17 +174,24 @@
 			    							if (carpos == 3 || carpos == 4 || carpos == 5 || carpos == 6 || carpos == 7 || carpos == 50)
 		    								{
 			    								imgs = "images/carside.png";		
+			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:35px;height:20px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
 		    								}
 			    							else if (carpos == 48 || carpos == 49)
 		    								{
 			    								imgs = "images/carrotate.png";	
+			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:23px;height:32px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
 		    								}
-			    							imgt += '<img src="'+imgs+'" style="position:absolute;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
+			    							else
+		    								{
+			    								imgs = "images/car.png";	
+			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:20px;height:35px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
+		    								}
+			    							
 			    						}
 			    					}
 			    					$("#downcar").html(imgt);
 			    				}
-							}							
+							}				
 						$("#signal").html(t);		
 					}
 				}
