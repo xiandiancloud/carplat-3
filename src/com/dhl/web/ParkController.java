@@ -70,7 +70,7 @@ public class ParkController {
 			buffer.append(",\"pos\":");
 			buffer.append("\"" + p.getPos() + "\"");
 			buffer.append(",\"info\":");
-			buffer.append("\"" + p.getInfo() + "\"");
+			buffer.append("'" + p.getInfo() + "'");
 			buffer.append("},");
 		}
 		if (count > 0) {
