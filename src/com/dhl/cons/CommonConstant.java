@@ -21,4 +21,9 @@ public class CommonConstant
    
    public static final int ADMIN_ROLE = 0;
    public static final int TEARCHER_ROLE = 1;
+   
+   //前校门，
+   public static final int FRONT_FLOOR = 1;
+   public static final int BACK_FLOOR = 2;
+   public static final int FLOOR = 3;
 }

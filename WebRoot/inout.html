@@ -167,6 +167,7 @@
 				            <li id="clgl"><a href="" id="clli">车辆管理</a></li>
 				            <li class="dhlactive" id="crgl"><a  href="" id="crli">出入管理</a></li>
 				            <li id="dcgl"><a id="dcli">停车场管理</a></li>
+				            <li id="ledgl"><a id="ledli">显示屏管理</a></li>
 			        	</ul>
 						<div class="clear"></div>
 					</div>
@@ -274,7 +275,7 @@
 	    		$("#crli").attr("href","/carplat/inout.html");
 	    		$("#clli").attr("href","/carplat/");	 	    
 	    		$("#dcli").attr("href","/carplat/parking.html");
-	    		
+	    		$("#ledli").attr("href","/carplat/led.html");
 		    	$("#username").html("管理员");	    	
 		    	$("#userimg").attr("src","images/user.png");
 	    	}
@@ -285,6 +286,7 @@
 	    		$("#crli").attr("href","/carplat/inout.html?"+b);
 	    		$("#clli").attr("href","/carplat/index.html?"+b);	
 	    		$("#dcli").attr("href","/carplat/parking.html?"+b);
+	    		$("#ledli").attr("href","/carplat/led.html?"+b);
 	    		if (role == 0)
 		    	{
 		    		$("#crgl").show();

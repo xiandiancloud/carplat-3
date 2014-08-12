@@ -32,6 +32,7 @@
 				            <li id="clgl"><a href="" id="clli">车辆管理</a></li>
 				            <li id="crgl"><a  href="" id="crli">出入管理</a></li>
 				            <li class="dhlactive" id="dcgl"><a id="dcli">停车场管理</a></li>
+				            <li id="ledgl"><a id="ledli">显示屏管理</a></li>
 			        	</ul>
 						<div class="clear"></div>
 					</div>
@@ -120,7 +121,7 @@
 	    		$("#crli").attr("href","/carplat/inout.html");
 	    		$("#clli").attr("href","/carplat/");	 	    
 	    		$("#dcli").attr("href","/carplat/parking.html");
-	    		
+	    		$("#ledli").attr("href","/carplat/led.html");
 		    	$("#username").html("管理员");	    	
 		    	$("#userimg").attr("src","images/user.png");
 	    	}
@@ -131,6 +132,7 @@
 	    		$("#crli").attr("href","/carplat/inout.html?"+b);
 	    		$("#clli").attr("href","/carplat/index.html?"+b);
 	    		$("#dcli").attr("href","/carplat/parking.html?"+b);
+	    		$("#ledli").attr("href","/carplat/led.html?"+b);
 		    	//管理员
 		    	if (role == 0)
 		    	{
@@ -175,17 +177,17 @@
 			    							if (carpos == 3 || carpos == 4 || carpos == 5 || carpos == 6 || carpos == 7 || carpos == 50)
 		    								{
 			    								imgs = "images/carside.png";		
-			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:35px;height:20px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
+			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:55px;height:55px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
 		    								}
 			    							else if (carpos == 48 || carpos == 49)
 		    								{
 			    								imgs = "images/carrotate.png";	
-			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:23px;height:32px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
+			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:55px;height:55px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
 		    								}
 			    							else
 		    								{
 			    								imgs = "images/car.png";	
-			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:20px;height:35px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
+			    								imgt += '<img src="'+imgs+'" style="position:absolute;width:55px;height:55px;margin-left: '+obj.left+'px;margin-top: '+obj.top+'px;">';
 		    								}
 			    							
 			    						}
