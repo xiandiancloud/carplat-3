@@ -20,4 +20,16 @@ public class TmpCarDao extends BaseDao<TmpCar> {
 		String hql = "from TmpCar where card = '"+card+"'";
     	return find(hql);
 	}
+	
+	public List<TmpCar> getCarByCard(String card)
+	{
+		String hql = "from TmpCar where card = '"+card+"'";
+    	return find(hql);
+	}
+	
+	public List<TmpCar> getAllCar()
+	{
+		String hql = "from TmpCar";
+    	return find(hql);
+	}
 }

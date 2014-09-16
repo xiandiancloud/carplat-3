@@ -29,6 +29,10 @@ public class TmpCarService {
 		return tmpCarDao.getAllList(pageNo, pageSize);
 	}
 	
+	public List<TmpCar> getAllCar()
+	{
+		return tmpCarDao.getAllCar();
+	}
 	/**
 	 * 跟据id取得案例 
 	 * @return
@@ -47,6 +51,32 @@ public class TmpCarService {
 			return CommonConstant.ERROR_1;
 		}
 		tmpCarDao.save(car);
+		return str;
+	}
+	
+	/**
+	 * 导入csv文件的时候调用
+	 * @param car
+	 * @return
+	 */
+	public String save(String[] strs)
+	{
+		String str = "sucess";
+		int len = strs.length;
+		for (int i=0;i<len;i++)
+		{
+			List<TmpCar> list = tmpCarDao.getCarByCard(strs[0]);
+			if (list != null && list.size() > 0)
+			{
+				continue;
+			}
+			TmpCar car = new TmpCar();
+			car.setCard(strs[0]);
+			car.setCaruser(strs[1]);
+			car.setCarposition(strs[2]);
+//			car.setTel(strs[3]);
+			tmpCarDao.save(car);
+		}
 		return str;
 	}
 	

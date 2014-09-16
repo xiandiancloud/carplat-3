@@ -29,6 +29,10 @@ public class CarService {
 		return caseDao.getAllList(pageNo, pageSize);
 	}
 	
+	public List<Car> getAllCar()
+	{
+		return caseDao.getAllCar();
+	}
 	/**
 	 * 取得个人car列表
 	 * @return
@@ -79,7 +83,7 @@ public class CarService {
 			car.setCard(strs[0]);
 			car.setCaruser(strs[1]);
 			car.setCarposition(strs[2]);
-			car.setTel(strs[3]);
+//			car.setTel(strs[3]);
 			caseDao.save(car);
 		}
 		return str;

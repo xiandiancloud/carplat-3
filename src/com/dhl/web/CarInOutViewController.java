@@ -85,6 +85,10 @@ public class CarInOutViewController {
 			buffer.append("\"" + p[1] + "\"");
 			buffer.append(",\"count3\":");
 			buffer.append("\"" + p[2] + "\"");
+			buffer.append(",\"count4\":");
+			buffer.append("\"" + p[3] + "\"");
+			buffer.append(",\"count5\":");
+			buffer.append("\"" + p[4] + "\"");
 			buffer.append("},");
 		}
 		if (count > 0) {

@@ -170,7 +170,8 @@
 				<div class="clear"></div>
 				<div class="copyright"><h1>访客车辆管理</h1></div>
 				<div class="logobottom">
-					<button id="addbutton" class="btn btn-warning"><i class="icon-plus"></i>增加</button>
+					<!-- <button id="addbutton" class="btn btn-warning"><i class="icon-plus"></i>增加</button> -->
+					<table><tr><td><div class="upload-button" id="bootstrapped-fine-uploader"></div></td><td>&nbsp;&nbsp;</td><td><a href="tmpimportcar.action"><button class="btn btn-warning"><i class="icon-download"></i>导出</button>	</a></td><td>&nbsp;&nbsp;</td><td><button id="addbutton" class="btn btn-warning"><i class="icon-plus"></i>增加</button>	</td></tr></table>
 				</div>
 				<div class="clear"></div>
 				<div class="logobottom">车辆总数：<a id="total"></a>&nbsp;&nbsp;辆</div>
@@ -354,13 +355,13 @@
 			$("#update").click(function(){
 				save("tmpupdateCar.action");
 			});			
-			//createUploader();			
+			createUploader();			
 		});
-	    /* function createUploader() { 
+	    function createUploader() { 
 	    	var uploader = new qq.FineUploader({ 
 	    	element: document.getElementById('bootstrapped-fine-uploader'), 
 	    	request: { 
-	    	endpoint: 'upload.action' 
+	    	endpoint: 'tmpupload.action' 
 	    	}, 
 	    	text: { 
 	    	uploadButton: '<button class="btn btn-warning"><i class="icon-upload"></i>导入</button>' 
@@ -391,7 +392,7 @@
 	    	},
 	    	debug: true 
 	    	}); 
-	    	} */
+	    	}
 	    function save(url)
 	    {
 	    	var id = $("#id").val();
@@ -443,17 +444,16 @@
 					var a=eval("("+s+")");
 					if (a)
 					{
-						//alert(a.total+"   ,   "+a.rows.length);
-						//$("#code").attr("value",a.code);
-						$("#card").attr("value",a.card);
-						//$("#cartype").attr("value",a.cartype);
-						$("#caruser").attr("value",a.caruser);
-						//$("#tpye").attr("value",a.tpye);
-						//$("#carposition").attr("value",a.carposition);
-						//$("#paytype").attr("value",a.paytype);
-						$("#tel").attr("value",a.tel);
-						$("#address").attr("value",a.address);
-						$("#indate").attr("value",a.indate);
+						document.getElementById("card").value=a.card;
+						document.getElementById("caruser").value=a.caruser;
+						document.getElementById("tel").value=a.tel;
+						document.getElementById("address").value=a.address;
+						document.getElementById("indate").value=a.indate;
+						//$("#card").attr("value",a.card);
+						//$("#caruser").attr("value",a.caruser);
+						//$("#tel").attr("value",a.tel);
+						//$("#address").attr("value",a.address);
+						//$("#indate").attr("value",a.indate);
 						$("#add").hide();
 						$("#update").show();
 						$('#myModal').modal('show')

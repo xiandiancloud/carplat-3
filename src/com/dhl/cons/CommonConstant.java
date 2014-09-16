@@ -16,8 +16,13 @@ public class CommonConstant
    
    public static final String ERROR_1 = "车辆已经存在";
    
-   public static final String CAR_STATUS1 = "进";
-   public static final String CAR_STATUS2 = "出";
+//   public static final String CAR_STATUS1 = "进";
+//   public static final String CAR_STATUS2 = "出";
+   
+   public static final String CAR_IN_STATUS1 = "前门进";
+   public static final String CAR_IN_STATUS2 = "后门进";
+   public static final String CAR_OUT_STATUS1 = "前门出";
+   public static final String CAR_OUT_STATUS2 = "后门出";
    
    public static final int ADMIN_ROLE = 0;
    public static final int TEARCHER_ROLE = 1;

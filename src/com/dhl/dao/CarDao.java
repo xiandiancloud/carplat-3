@@ -27,4 +27,10 @@ public class CarDao extends BaseDao<Car> {
 		String hql = "from Car where card = '"+card+"'";
     	return find(hql);
 	}
+	
+	public List<Car> getAllCar()
+	{
+		String hql = "from Car";
+    	return find(hql);
+	}
 }

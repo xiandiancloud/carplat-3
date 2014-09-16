@@ -358,10 +358,10 @@
 					var a=eval("("+s+")");
 					if (a)
 					{						
-						var t = '<tr><th></th><th>进入车辆</th><th>离开车辆</th></tr>';
+						var t = '<tr><th></th><th>前门进入车辆</th><th>后门进入车辆</th><th>前门离开车辆</th><th>后门离开车辆</th></tr>';
 						for(var i=0;i<a.rows.length;i++){
 								var b = a.rows[i];
-			    				t += '<tr><td>'+b.count1+'</td><td>'+b.count2+'</td><td>'+b.count3+'</td></tr>';
+			    				t += '<tr><td>'+b.count1+'</td><td>'+b.count2+'</td><td>'+b.count3+'</td><td>'+b.count4+'</td><td>'+b.count5+'</td></tr>';
 							}							
 						$("#signal").html(t);		
 					}
@@ -421,14 +421,14 @@
 					var a=eval("("+s+")");
 					if (a)
 					{						
-						var t = '<tr><th>编号</th><th>车牌</th><th>进入</th><th>车主</th><th>联系方式</th><th>车位状态</th><th>是否迟到</th></tr>';
+						var t = '<tr><th>编号</th><th>车牌</th><th>进入时间</th><th>进入位置</th><th>车主</th><th>联系方式</th><th>车位状态</th><th>是否迟到</th></tr>';
 						if (status == 1)
 						{
-							t = '<tr><th>编号</th><th>车牌</th><th>离开</th><th>车主</th><th>联系方式</th><th>车位状态</th><th>是否迟到</th></tr>';
+							t = '<tr><th>编号</th><th>车牌</th><th>离开时间</th><th>离开位置</th><th>车主</th><th>联系方式</th><th>车位状态</th><th>是否迟到</th></tr>';
 						}
 						for(var i=0;i<a.rows.length;i++){
 								var b = a.rows[i];
-			    				t += '<tr><td>'+b.code+'</td><td>'+b.card+'</td><td>'+b.indate+'</td><td>'+b.caruser+'</td><td>'+b.tel+'</td><td>'+b.alldate+'</td><td>'+b.time+'</td></tr>';
+			    				t += '<tr><td>'+b.code+'</td><td>'+b.card+'</td><td>'+b.indate+'</td><td>'+b.status+'</td><td>'+b.caruser+'</td><td>'+b.tel+'</td><td>'+b.alldate+'</td><td>'+b.time+'</td></tr>';
 							}							
 						$("#cartable").html(t);
 						

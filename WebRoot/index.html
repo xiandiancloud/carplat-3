@@ -169,7 +169,7 @@
 				</div>
 				<div class="copyright"><h1>常用车辆管理</h1></div>
 				<div class="logobottom">
-				<table><tr><td><div class="upload-button" id="bootstrapped-fine-uploader"></div></td><td>&nbsp;&nbsp;</td><td><button id="addbutton" class="btn btn-warning"><i class="icon-plus"></i>增加</button>	</td></tr></table>
+				<table><tr><td><div class="upload-button" id="bootstrapped-fine-uploader"></div></td><td>&nbsp;&nbsp;</td><td><a href="importcar.action"><button class="btn btn-warning"><i class="icon-download"></i>导出</button>	</a></td><td>&nbsp;&nbsp;</td><td><button id="addbutton" class="btn btn-warning"><i class="icon-plus"></i>增加</button>	</td></tr></table>
 				</div>
 				<div class="clear"></div>
 							
@@ -291,7 +291,6 @@
 		    	$("#userimg").attr("src",array[3]);
 		    	initCar(1,role,username);
 	    	}
-	    	
 	    	$("#addbutton").click(function(){	
 	    		
 				$("#add").show();
@@ -443,18 +442,16 @@
 					var a=eval("("+s+")");
 					if (a)
 					{
-						//alert(a.total+"   ,   "+a.rows.length);
-						//$("#code").attr("value",a.code);
-						$("#card").attr("value",a.card);
-						//$("#cartype").attr("value",a.cartype);
-						$("#caruser").attr("value",a.caruser);
-						//$("#tpye").attr("value",a.tpye);
-						//$("#carposition").attr("value",a.carposition);
-						//$("#paytype").attr("value",a.paytype);
-						$("#tel").attr("value",a.tel);
+						document.getElementById("card").value=a.card;
+						document.getElementById("caruser").value=a.caruser;
+						document.getElementById("tel").value=a.tel;
+						//$("#card").attr("value",a.card);
+						//$("#caruser").attr("value",a.caruser);
+						//$("#tel").attr("value",a.tel);
+						
 						$("#add").hide();
 						$("#update").show();
-						$('#myModal').modal('show')
+						$('#myModal').modal('show');
 					}
 				}
 				});
