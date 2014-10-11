@@ -18,7 +18,6 @@
     
     <link href="css/base.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
-
   </head>
   <body>
 <!-- <div class="container">
@@ -121,21 +120,20 @@
 		</div>
 	</div> -->
 
-<div class="content">
+<!-- <div class="content"> -->
 		<div class="contentwrap">
-
-			<div class="top">
+			<div class="top" style="height:30px;>
 				<div class="header png_bg">
-					<div class="logo"><a href="" id="logo"><img src="images/logo.png"/></a></div>
-					<div class="login"> 						
+					<!-- <div class="logo"><a href="" id="logo"><img src="images/logo.png"/></a></div> -->
+					<!-- <div class="login"> 						
 					   <div class="loginwrap">
 							<div class="inputwrap">
-								<a><img src="" id="userimg" width="50px"/></a>
+								<a><img src="" id="userimg"  width="50px"/></a>
 								<a id="username"></a>
 							</div>
 						</div>
-					</div>
-					<div class="clear"></div>
+					</div> -->
+					<!-- <div class="clear"></div> -->
 					<div class="dhlnav menu" id="nav">
 						<ul class="dhlnav">			            
 				            <li class="dhlactive" id="clgl"><a href="" id="clli">车辆管理</a></li>
@@ -146,36 +144,33 @@
 						<div class="clear"></div>
 					</div>
 				</div>
-
-				<div class="flash">
-					<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"  width="1050" height="405" align="center">
-						<param name="movie" value="flash/index.swf">
-						<param name="quality" value="high">
-						<param name="wmode" value="transparent">
-						<embed src="flash/index.swf"  wmode="transparent"  width="1050" height="405" align="center" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
-					</object>
-				</div>
-			</div>
-			<div class="conmain  png_bg">
+			<div class="conmain png_bg">
 				<div class="contentTop">
-					<div class="contentTopLeft">
+					<!-- <div class="contentTopLeft">
 						<div id="scrollWrap"> 
 							<ul id="scrollMsg"> 
 								<li><a class="msgtip" href="#">车辆管理</a></li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 					<div class="clear"></div>
 				</div>
 				<div class="copyright"><h1>常用车辆管理</h1></div>
 				<div class="logobottom">
-				<table><tr><td><div class="upload-button" id="bootstrapped-fine-uploader"></div></td><td>&nbsp;&nbsp;</td><td><a href="importcar.action"><button class="btn btn-warning"><i class="icon-download"></i>导出</button>	</a></td><td>&nbsp;&nbsp;</td><td><button id="addbutton" class="btn btn-warning"><i class="icon-plus"></i>增加</button>	</td></tr></table>
+				<table><tr>
+				<td><div class="upload-button" id="bootstrapped-fine-uploader"></div></td>
+				<td>&nbsp;&nbsp;</td>
+				<td><a href="importcar.action"><button class="btn btn-warning"><i class="icon-download"></i>导出</button>	</a></td>
+				<td>&nbsp;&nbsp;</td>
+				<td><button id="addbutton" class="btn btn-warning"><i class="icon-plus"></i>增加</button>	</td>
+				</tr>
+				</table>
 				</div>
 				<div class="clear"></div>
 							
 				<div class="logobottom">车辆总数：<a id="total"></a>&nbsp;&nbsp;辆</div>
 				<ul class="nav nav-tabs">
-			        <li class="active"><a href="" id="cya">常用车辆</a></li>
+			         <li class="active"><a href="" id="cya">常用车辆</a></li>
 			        <li id="fkli"><a href="" id="fka">访客车辆</a></li>
 			    </ul>
 		 		
@@ -183,10 +178,10 @@
 	 			<ul class="pagination"></ul>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 
 	<div class="footer">
-		<div class="footerCon">
+		<!-- <div class="footerCon">
 			<div class="copyright">
 				<p>版权所有：无锡旅游商贸高等职业技术学校   COPYRIGHT © 2010 ALL RIGHTS RESERVED </p>
 				<p>地址：无锡市广石路999号 <span>电话：0510-83116678</span>    <span> 苏ICP备:09007163</span>技术支持：南京第五十五所技术开发有限公司</p>
@@ -195,7 +190,7 @@
 				<img src="images/logobottom.gif"/>
 			</div>
 			<div class="clear"></div>
-		</div>
+		</div> -->
 	</div>
 		
 <div id="myModal" class="modal hide fade">
@@ -281,10 +276,14 @@
 		    	if (role == 0)
 		    	{
 		    		$("#crgl").show();
+		    		/* $(".icon-pencil").show();
+		    		$(".icon-trash").show(); */
 		    	}
 		    	else// if (role == 1)
 		    	{		    		
 		    		$("#crgl").hide();
+		    		/* $(".icon-pencil").hide();
+		    		$(".icon-trash").hide(); */
 		    	}    	
 		    	var username = array[2];
 		    	$("#username").html(username);	    	
