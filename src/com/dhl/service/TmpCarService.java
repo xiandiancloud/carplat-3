@@ -29,6 +29,15 @@ public class TmpCarService {
 		return tmpCarDao.getAllList(pageNo, pageSize);
 	}
 	
+	/**
+	 * 取得个人car列表
+	 * @return
+	 */
+	public Page getAllList(int pageNo,int pageSize,String username)
+	{
+		return tmpCarDao.getAllList(pageNo, pageSize, username);
+	}
+	
 	public List<TmpCar> getAllCar()
 	{
 		return tmpCarDao.getAllCar();

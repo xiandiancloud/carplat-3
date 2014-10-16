@@ -37,10 +37,19 @@ public class TmpCarController {
 	 * @param response
 	 */
 	@RequestMapping("/tmpgetAllCar")
-	public void tmpgetAllCar(HttpServletRequest request,HttpServletResponse response, int pindex) {
+	public void tmpgetAllCar(HttpServletRequest request,HttpServletResponse response, int pindex,int role,String username) {
 		try {
-			Page list = caseService
-					.getAllList(pindex, CommonConstant.PAGE_SIZE);
+//			Page list = caseService
+//					.getAllList(pindex, CommonConstant.PAGE_SIZE);
+			Page list = null;// = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE);
+			if (role == CommonConstant.ADMIN_ROLE)
+			{
+				list = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE);
+			}
+			else// if (role == CommonConstant.TEARCHER_ROLE)
+			{
+				list = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE, username);
+			}
 			PrintWriter out = response.getWriter();
 			String str = javatojson(list);
 			out.write(str);

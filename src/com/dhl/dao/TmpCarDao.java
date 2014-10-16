@@ -15,6 +15,13 @@ public class TmpCarDao extends BaseDao<TmpCar> {
 //    	return find(hql);
 	}
 	
+	public Page getAllList(int pageNo,int pageSize,String username)
+	{
+		String hql = "from TmpCar where caruser = '"+username+"'";
+		return pagedQuery(hql, pageNo, pageSize);
+//    	return find(hql);
+	}
+	
 	public List<TmpCar> getCarByCode(String card)
 	{
 		String hql = "from TmpCar where card = '"+card+"'";
