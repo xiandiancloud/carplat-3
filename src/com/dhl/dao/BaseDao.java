@@ -155,6 +155,26 @@ public class BaseDao<T>{
 	 *
 	 * @param values 可变参数.
 	 */
+	public Page qqpagedQuery(String hql,int pageSize, Object... values) {
+		Assert.hasText(hql);
+		/*Assert.isTrue(pageNo >= 1, "pageNo should start from 1");*/
+		// Count查询
+		String countQueryString = " select count (*) " + removeSelect(removeOrders(hql));
+		List countlist = getHibernateTemplate().find(countQueryString, values);
+		long totalCount = (Long) countlist.get(0);
+
+		if (totalCount < 1)
+			return new Page();
+		// 实际查询返回分页对象
+		int startIndex = Page.getStartOfPage(1000);
+		Query query = createQuery(hql, values);
+		List list = query.setFirstResult(startIndex).setMaxResults(1000).list();
+
+		return new Page(startIndex, totalCount, 1000, list);
+	}
+
+	
+	
 	public Query createQuery(String hql, Object... values) {
 		Assert.hasText(hql);
 		Query query = getSession().createQuery(hql);

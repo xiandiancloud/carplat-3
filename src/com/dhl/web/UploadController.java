@@ -191,7 +191,7 @@ public class UploadController {
 //			 List<String> dataList=new ArrayList<String>();
 		        
 			 String path = request.getSession().getServletContext().getRealPath("/export/");
-			 File file = new File(path+"/车辆信息.csv");
+			 File file = new File(path+"/人员信息.csv");
 			 if (!file.exists())
 			 {
 				 file.createNewFile();
@@ -242,6 +242,7 @@ public class UploadController {
 		            }
 		        }
 		        
+
 	            // 以流的形式下载文件。
 	            InputStream fis = new BufferedInputStream(new FileInputStream(file));
 	            byte[] buffer = new byte[fis.available()];
@@ -280,7 +281,7 @@ public class UploadController {
 //			 List<String> dataList=new ArrayList<String>();
 		        
 			 String path = request.getSession().getServletContext().getRealPath("/export/");
-			 File file = new File(path+"/临时车辆信息.csv");
+			 File file = new File(path+"/临时人员信息.csv");
 			 if (!file.exists())
 			 {
 				 file.createNewFile();

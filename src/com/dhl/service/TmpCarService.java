@@ -28,16 +28,10 @@ public class TmpCarService {
 	{
 		return tmpCarDao.getAllList(pageNo, pageSize);
 	}
-	
-	/**
-	 * 取得个人car列表
-	 * @return
-	 */
-	public Page getAllList(int pageNo,int pageSize,String username)
+	public List<TmpCar> qqgetAllList(int pageNo,int pageSize)
 	{
-		return tmpCarDao.getAllList(pageNo, pageSize, username);
+		return tmpCarDao.qqgetAllList(pageNo, pageSize);
 	}
-	
 	public List<TmpCar> getAllCar()
 	{
 		return tmpCarDao.getAllCar();

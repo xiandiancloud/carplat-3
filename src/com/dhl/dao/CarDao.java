@@ -1,6 +1,7 @@
 package com.dhl.dao;
 import java.util.List;
 
+import org.jfree.chart.block.CenterArrangement;
 import org.springframework.stereotype.Repository;
 
 import com.dhl.domain.Car;
@@ -20,6 +21,24 @@ public class CarDao extends BaseDao<Car> {
 		String hql = "from Car where caruser = '"+username+"'";
 		return pagedQuery(hql, pageNo, pageSize);
 //    	return find(hql);
+		/*return getHibernateTemplate().find(hql);*/
+	}
+	
+	public List<Car> qqgetAllList(int pageNo,int pageSize)
+	{
+		String hql = "from Car";
+		/*return pagedQuery(hql, pageNo, pageSize);*/
+//    	return find(hql);
+		return getHibernateTemplate().find(hql);
+	}
+	
+	
+	public List<Car> qqgetAllList(int pageNo,int pageSize,String username)
+	{
+		String hql = "from Car where caruser = '"+username+"'";
+		/*return pagedQuery(hql, pageNo, pageSize);*/
+//    	return find(hql);
+		return getHibernateTemplate().find(hql);
 	}
 	
 	public List<Car> getCarByCard(String card)

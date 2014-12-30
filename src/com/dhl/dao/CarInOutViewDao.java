@@ -39,6 +39,36 @@ public class CarInOutViewDao extends BaseDao<CarInOutView> {
 		return pagedQuery(hql, pageNo, pageSize);
 	}
 	
+	public List<CarInOutView> qqgetAllCarInOut(int pageSize,String indate,int status,String outdate)
+	{
+//		String hql = "from CarInOut where bet = "+indate;
+//		String hql = "from CarInOut where indate between '"+indate+"' and '2015-01-01'";
+		String adate = UtilTools.getSpecifiedDayAfter(indate);
+		if (indate.equals(outdate))
+		{
+			outdate = adate;
+		}
+		else
+		{
+			String adates = UtilTools.getSpecifiedDayAfter(outdate);
+			outdate = adates;
+		}
+		String str = status == 0 ? CommonConstant.CAR_IN_STATUS1:CommonConstant.CAR_IN_STATUS2;
+		String hql;// = "from CarInOutView where indate < '"+outdate+"' and indate >= '"+indate+"' and status = '"+str+"' order by indate desc";
+		if(status == 0)
+		{
+			hql = "from CarInOutView where indate < '"+outdate+"' and indate >= '"+indate+"' and (status = '"+CommonConstant.CAR_IN_STATUS1+"' or status = '"+CommonConstant.CAR_IN_STATUS2+"') order by indate desc";
+		}
+		else
+		{
+			hql = "from CarInOutView where indate < '"+outdate+"' and indate >= '"+indate+"' and (status = '"+CommonConstant.CAR_OUT_STATUS1+"' or status = '"+CommonConstant.CAR_OUT_STATUS2+"') order by indate desc";
+		}
+//		String hql = "from CarInOutView where indate < '2024-06-08' and status = '"+str+"'";
+//		return qqpagedQuery(hql,1000);
+		return getHibernateTemplate().find(hql);
+	}
+	
+	
 	public List<String[]> getCountList(String indate,String outdate)
 	{
 //		String queryString = "SELECT pos,count(*) from CarInOutView group by pos";

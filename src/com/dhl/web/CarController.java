@@ -55,6 +55,28 @@ public class CarController {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping("/qqgetAllCar")
+	public void qqgetAllCar(HttpServletRequest request,HttpServletResponse response, int pindex,int role,String username) {
+		try {	
+			List<Car> list;
+			/*Page list = null;// = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE);
+*/			if (role == CommonConstant.ADMIN_ROLE)
+			{
+				 list = caseService.qqgetAllList(pindex, CommonConstant.PAGE_SIZE);
+			}
+			else// if (role == CommonConstant.TEARCHER_ROLE)
+			{
+				 list = caseService.qqgetAllList(pindex, CommonConstant.PAGE_SIZE, username);
+			}
+			PrintWriter out = response.getWriter();
+			String str = javatojson(list);
+			out.write(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	/**
 	 * 取得车辆信息
@@ -133,13 +155,15 @@ public class CarController {
 	 * @param list
 	 * @return
 	 */
-	private String javatojson(Page list) {
+	private String javatojson(Page list) 
+	{
 		StringBuffer buffer = new StringBuffer();
 		long count = list.getTotalCount();
 		buffer.append("{\"total\":" + count + ",\"rows\":[");
 		List<Car> data = list.getResult();
 		Iterator<Car> it = data.iterator();
-		while (it.hasNext()) {
+		while (it.hasNext()) 
+		{
 			Car p = it.next();
 			buffer.append("{");
 			buffer.append("\"id\":");
@@ -156,14 +180,59 @@ public class CarController {
 			buffer.append("\"" + p.getTel() + "\"");
 			buffer.append("},");
 		}
-		if (count > 0) {
+		if (count > 0) 
+		{
 			String str = buffer.substring(0, buffer.length() - 1) + "]}";
 			str = str.replaceAll("null", "");
 			return str;
-		} else {
+		} 
+		else 
+		{
 			String str = buffer.toString() + "]}";
 			str = str.replaceAll("null", "");
 			return str;
 		}
 	}
+	
+	private String javatojson(List<Car> list) 
+	{
+		StringBuffer buffer = new StringBuffer();
+		int count = list.size();
+		buffer.append("{\"total\":" + count + ",\"rows\":[");
+		/*List<Car> data = list.getResult();*/
+		/*Iterator<Car> it = data.iterator();*/
+		/*while (it.hasNext()) */
+		for (Car p:list) 
+		{
+			/*Car p = it.next();*/
+			buffer.append("{");
+			buffer.append("\"id\":");
+			buffer.append("\"" + p.getId() + "\"");
+			buffer.append(",\"code\":");
+			buffer.append("\"" + UtilTools.getNumber("C", p.getId()) + "\"");
+			buffer.append(",\"card\":");
+			buffer.append("\"" + p.getCard().trim() + "\"");
+			buffer.append(",\"caruser\":");
+			buffer.append("\"" + p.getCaruser() + "\"");
+			buffer.append(",\"carposition\":");
+			buffer.append("\"" + p.getCarposition() + "\"");			
+			buffer.append(",\"tel\":");
+			buffer.append("\"" + p.getTel() + "\"");
+			buffer.append("},");
+		}
+		if (count > 0) 
+		{
+			String str = buffer.substring(0, buffer.length() - 1) + "]}";
+			str = str.replaceAll("null", "");
+			return str;
+		} 
+		else 
+		{
+			String str = buffer.toString() + "]}";
+			str = str.replaceAll("null", "");
+			return str;
+		}
+	}
+	
+	
 }

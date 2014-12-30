@@ -41,7 +41,7 @@ public class Page implements Serializable {
 		this.totalCount = totalSize;
 		this.data = data;
 	}
-
+	
 	/**
 	 * 取总记录数.
 	 */

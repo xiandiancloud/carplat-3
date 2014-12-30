@@ -281,7 +281,6 @@
 		    	
 		    	$("#username").html("管理员");	    	
 		    	$("#userimg").attr("src","images/user.png");
-		    	initCar(1,0,"admin");
 	    	}
 	    	else
 	    	{
@@ -297,12 +296,10 @@
 	    		if (role == 0)
 		    	{
 		    		$("#crgl").show();
-		    		$("#ledgl").show();
 		    	}
 		    	else// if (role == 1)
 		    	{		    		
 		    		$("#crgl").hide();
-		    		$("#ledgl").hide();
 		    	}   	
 		    	//管理员
 		    	/*if (role == 0)
@@ -320,8 +317,8 @@
 		    	var username = array[2];
 		    	$("#username").html(username);	    	
 		    	$("#userimg").attr("src",array[3]);
-		    	initCar(1,role,username);
 	    	}	    		    	
+	    	initCar(1);
 	    	$("#addbutton").click(function(){	
 				$("#add").show();
 				$("#update").hide();
@@ -424,17 +421,7 @@
 					if ("sucess" == s)
 					{
 						$('#myModal').modal('hide');
-						//initCar(1);
-						var array = parseUrl();
-						var b = array[0];	    	
-	    	   			if ("admin" == b)
-	    	   			{
-	    	   				initCar(1,0,"管理员");
-	    	   			}
-	    	   			else
-	    	   			{
-	    	   				initCar(1,array[1],array[2]);
-	    	   			}
+						initCar(1);
 					}
 					else
 					{
@@ -478,17 +465,7 @@
 				success:function(s){
 					if ("sucess" == s)
 					{
-						//initCar(1);
-						var array = parseUrl();
-						var b = array[0];	    	
-	    	   			if ("admin" == b)
-	    	   			{
-	    	   				initCar(1,0,"管理员");
-	    	   			}
-	    	   			else
-	    	   			{
-	    	   				initCar(1,array[1],array[2]);
-	    	   			}
+						initCar(1);
 						alert("删除成功");
 					}
 				}
@@ -501,27 +478,15 @@
                 maxPageButton:buttons,
                 onPageClicked: function(obj, pageIndex) {
                   var pindex = pageIndex+1;
-                  var array = parseUrl();
-				  var b = array[0];	 
-				  if ("admin" == b)
-	  	   		  {
-	  	   				initCar(pindex,0,"管理员");
-	  	   		  }
-	  	   		  else
-	  	   		  {
-	  	   				initCar(pindex,array[1],array[2]);
-	  	   		  }
-                  //initCar(pindex);
+                  initCar(pindex);
                 }
             });
         }
-	    function initCar(pindex,role,username)
+	    function initCar(pindex)
 	    {
-	    	var data = {pindex:pindex,role:role,username:username};
 	    	$.ajax({
-				url:"tmpgetAllCar.action",
+				url:"tmpgetAllCar.action?pindex="+pindex,
 				type:"post",
-				data:data,
 				success:function(s){
 					var a=eval("("+s+")");
 					if (a)

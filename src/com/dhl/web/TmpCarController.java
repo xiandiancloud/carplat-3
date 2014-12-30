@@ -37,19 +37,10 @@ public class TmpCarController {
 	 * @param response
 	 */
 	@RequestMapping("/tmpgetAllCar")
-	public void tmpgetAllCar(HttpServletRequest request,HttpServletResponse response, int pindex,int role,String username) {
+	public void tmpgetAllCar(HttpServletRequest request,HttpServletResponse response, int pindex) {
 		try {
-//			Page list = caseService
-//					.getAllList(pindex, CommonConstant.PAGE_SIZE);
-			Page list = null;// = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE);
-			if (role == CommonConstant.ADMIN_ROLE)
-			{
-				list = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE);
-			}
-			else// if (role == CommonConstant.TEARCHER_ROLE)
-			{
-				list = caseService.getAllList(pindex, CommonConstant.PAGE_SIZE, username);
-			}
+			Page list = caseService
+					.getAllList(pindex, CommonConstant.PAGE_SIZE);
 			PrintWriter out = response.getWriter();
 			String str = javatojson(list);
 			out.write(str);
@@ -57,7 +48,18 @@ public class TmpCarController {
 			e.printStackTrace();
 		}
 	}
-
+	@RequestMapping("/qqtmpgetAllCar")
+	public void qqtmpgetAllCar(HttpServletRequest request,HttpServletResponse response, int pindex) {
+		try {
+			List<TmpCar> list = caseService
+					.qqgetAllList(pindex, CommonConstant.PAGE_SIZE);
+			PrintWriter out = response.getWriter();
+			String str = javatojson(list);
+			out.write(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 取得车辆信息
 	 * 
@@ -126,6 +128,45 @@ public class TmpCarController {
 			out.write(str);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	
+	private String javatojson(List<TmpCar> list) {
+		StringBuffer buffer = new StringBuffer();
+		int count = list.size();
+		buffer.append("{\"total\":" + count + ",\"rows\":[");
+		/*List<TmpCar> data = list.getResult();
+		Iterator<TmpCar> it = data.iterator();*/
+		/*while (it.hasNext()) */
+		for(TmpCar p:list)
+		{
+			/*TmpCar p = it.next();*/
+			buffer.append("{");
+			buffer.append("\"id\":");
+			buffer.append("\"" + p.getId() + "\"");
+			buffer.append(",\"code\":");
+			buffer.append("\"" + UtilTools.getNumber("F", p.getId()) + "\"");
+			buffer.append(",\"card\":");
+			buffer.append("\"" + p.getCard().trim() + "\"");		
+			buffer.append(",\"caruser\":");
+			buffer.append("\"" + p.getCaruser() + "\"");
+			buffer.append(",\"address\":");
+			buffer.append("\"" + p.getAddress()+ "\"");
+			buffer.append(",\"indate\":");
+			buffer.append("\"" + p.getIndate() + "\"");
+			buffer.append(",\"tel\":");
+			buffer.append("\"" + p.getTel() + "\"");
+			buffer.append("},");
+		}
+		if (count > 0) {
+			String str = buffer.substring(0, buffer.length() - 1) + "]}";
+			str = str.replaceAll("null", "");
+			return str;
+		} else {
+			String str = buffer.toString() + "]}";
+			str = str.replaceAll("null", "");
+			return str;
 		}
 	}
 	

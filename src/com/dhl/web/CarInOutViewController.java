@@ -48,7 +48,21 @@ public class CarInOutViewController {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
+	@RequestMapping("/qqcarInOut")
+	public void qqcarInOut(HttpServletRequest request,HttpServletResponse response,String indate,int status,String outdate) {
+		try {
+//			Date date = UtilTools.StringToDate(indate);
+			
+			List<CarInOutView> list = carInOutService.qqgetAllCarInOut(CommonConstant.PAGE_SIZE,indate,status,outdate);
+			PrintWriter out = response.getWriter();
+			String str = javatojson(list,status);
+			out.write(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 出入统计
 	 * @param request
@@ -89,6 +103,75 @@ public class CarInOutViewController {
 			buffer.append("\"" + p[3] + "\"");
 			buffer.append(",\"count5\":");
 			buffer.append("\"" + p[4] + "\"");
+			buffer.append("},");
+		}
+		if (count > 0) {
+			String str = buffer.substring(0, buffer.length() - 1) + "]}";
+			str = str.replaceAll("null", "");
+			return str;
+		} else {
+			String str = buffer.toString() + "]}";
+			str = str.replaceAll("null", "");
+			return str;
+		}
+	}
+	
+	private String javatojson(List<CarInOutView> list,int status) {
+		StringBuffer buffer = new StringBuffer();
+		int count = list.size();
+		buffer.append("{\"total\":" + count + ",\"rows\":[");
+//		List<CarInOutView> data = list.getResult();
+//		Iterator<CarInOutView> it = data.iterator();
+		//上班时间
+		String time = UtilTools.getConfig().getProperty("TIME");
+		String leavetime = UtilTools.getConfig().getProperty("TIME");
+//		while (it.hasNext()) {
+		for (CarInOutView p:list)
+		{
+//			CarInOutView p = it.next();
+			buffer.append("{");
+			buffer.append("\"id\":");
+			buffer.append("\"" + p.getId() + "\"");
+			buffer.append(",\"card\":");
+			buffer.append("\"" + p.getCard().trim() + "\"");
+			buffer.append(",\"status\":");
+			buffer.append("\"" + p.getStatus() + "\"");
+			buffer.append(",\"indate\":");
+			String indate = UtilTools.timeTostrall(p.getIndate());
+			buffer.append("\"" +indate+ "\"");
+			buffer.append(",\"code\":");
+			//buffer.append("\"" + p.getCode() + "\"");
+			String alldate = p.getAlldate();
+			Integer code = p.getCode();
+			if (alldate != null)
+			{
+				buffer.append("\"" + UtilTools.getNumber("F", code==null?0:code) + "\"");			
+			}
+			else
+			{
+				buffer.append("\"" + UtilTools.getNumber("C", code==null?0:code) + "\"");
+			}
+			buffer.append(",\"caruser\":");
+			buffer.append("\"" + p.getCaruser() + "\"");
+			buffer.append(",\"tel\":");
+			buffer.append("\"" + p.getTel() + "\"");
+			buffer.append(",\"time\":");
+			String strtime = "正常";
+			String hms = UtilTools.strtohms(indate);
+			if (status == 0)
+			{
+				int result = UtilTools.compiletime(hms,time);
+				strtime = result < 1 ? "正常" : "迟到";
+			}
+			else
+			{
+				int result = UtilTools.compiletime(hms,leavetime);
+				strtime = result < 1 ? "正常" : "早退";
+			}
+			buffer.append("\"" +strtime+ "\"");
+			buffer.append(",\"alldate\":");
+			String tmp = p.getAlldate() == null ? "固定":"临时";
+			buffer.append("\"" +tmp+ "\"");
 			buffer.append("},");
 		}
 		if (count > 0) {

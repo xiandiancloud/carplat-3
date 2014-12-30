@@ -276,14 +276,12 @@
 		    	if (role == 0)
 		    	{
 		    		$("#crgl").show();
-		    		$("#ledgl").show();
 		    		/* $(".icon-pencil").show();
 		    		$(".icon-trash").show(); */
 		    	}
 		    	else// if (role == 1)
 		    	{		    		
 		    		$("#crgl").hide();
-		    		$("#ledgl").hide();
 		    		/* $(".icon-pencil").hide();
 		    		$(".icon-trash").hide(); */
 		    	}    	
@@ -487,17 +485,7 @@
                 maxPageButton:buttons,
                 onPageClicked: function(obj, pageIndex) {
                   var pindex = pageIndex+1;
-                  var array = parseUrl();
-				  var b = array[0];	 
-				  if ("admin" == b)
-	  	   		  {
-	  	   				initCar(pindex,0,"管理员");
-	  	   		  }
-	  	   		  else
-	  	   		  {
-	  	   				initCar(pindex,array[1],array[2]);
-	  	   		  }
-                  //initCar(pindex, 0,"管理员");
+                  initCar(pindex, 0,"管理员");
                 }
             });
         }

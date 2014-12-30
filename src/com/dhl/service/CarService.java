@@ -42,6 +42,15 @@ public class CarService {
 		return caseDao.getAllList(pageNo, pageSize, username);
 	}
 	
+	public List<Car> qqgetAllList(int pageNo,int pageSize)
+	{
+		return caseDao.qqgetAllList(pageNo, pageSize);
+	}
+	
+	public List<Car> qqgetAllList(int pageNo,int pageSize,String username)
+	{
+		return caseDao.qqgetAllList(pageNo, pageSize, username);
+	}
 	/**
 	 * 跟据id取得案例 
 	 * @return
