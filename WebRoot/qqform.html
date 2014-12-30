@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>旅游商贸</title>
+		<meta
+			content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+			name='viewport'>
+		<meta content='text/html;charset=utf-8' http-equiv='content-type'>
+		<meta
+			content='Flat administration template for Twitter Bootstrap. Twitter Bootstrap 3 template with Ruby on Rails support.'
+			name='description'>
+		<link href='assets/images/meta_icons/favicon.ico' rel='shortcut icon'
+			type='image/x-icon'>
+		<link href='assets/images/meta_icons/apple-touch-icon.png'
+			rel='apple-touch-icon-precomposed'>
+		<link href='assets/images/meta_icons/apple-touch-icon-57x57.png'
+			rel='apple-touch-icon-precomposed' sizes='57x57'>
+		<link href='assets/images/meta_icons/apple-touch-icon-72x72.png'
+			rel='apple-touch-icon-precomposed' sizes='72x72'>
+		<link href='assets/images/meta_icons/apple-touch-icon-114x114.png'
+			rel='apple-touch-icon-precomposed' sizes='114x114'>
+		<link href='assets/images/meta_icons/apple-touch-icon-144x144.png'
+			rel='apple-touch-icon-precomposed' sizes='144x144'>
+		<!-- / START - page related stylesheets [optional] -->
+		
+		<!-- / END - page related stylesheets [optional] -->
+		<!-- / bootstrap [required] -->
+		<link href="assets/stylesheets/bootstrap/bootstrap.css" media="all"
+			rel="stylesheet" type="text/css" />
+		<!-- / theme file [required] -->
+		<link href="assets/stylesheets/light-theme.css" media="all"
+			id="color-settings-body-color" rel="stylesheet" type="text/css" />
+		<!-- / coloring file [optional] (if you are going to use custom contrast color) -->
+		<link href="assets/stylesheets/theme-colors.css" media="all"
+			rel="stylesheet" type="text/css" />
+		<!-- / demo file [not required!] -->
+		<link href="assets/stylesheets/demo.css" media="all" rel="stylesheet"
+			type="text/css" />
+    	<link href="css/nav.css" rel="stylesheet"/>
+    	<link href="css/jBootsrapPage.css" rel="stylesheet"/>
+	</head>
+	<body>
+	
+		<div class="container-fluid">
+		   <div class="row-fluid">
+		   	  <div class="h10"></div><div class="h10"></div><div class="h10"></div>
+		   	  
+                <div class='col-xs-12'>
+						<form class="form form-horizontal" style="margin-bottom: 0;;" method="post" action="#" accept-charset="UTF-8"><input name="authenticity_token" type="hidden" />
+						<div class='form-group'>
+                        <label class='col-xs-4 control-label' for="card"><a class="rcol">*</a>车牌：</label>
+                        <div class='col-xs-8'>
+                        <input type="text" id="card" class='form-control'/>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                      <label class='col-xs-4 control-label' for="caruser"><a class="rcol">*</a>车主：</label>
+                        <div class='col-xs-8'>
+							<input type="text" id="caruser" class='form-control'/>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <label class='col-xs-4 control-label' for="tel"><a class="rcol"></a>联系方式：</label>
+                        <div class='col-xs-8'>
+                          <input type="text" id="tel" class='form-control'/>
+                        </div>
+                      </div>
+                      <div class='form-group'>
+                        <div class='col-xs-12'>
+                        <button class="btn btn-warning btn-block btn-large" id="add">增加</button>
+                        </div>
+                      </div>
+                      </form>
+                </div>
+		   	  
+		   </div>
+		</div>
+	
+	<script src="assets/javascripts/jquery/jquery.min.js"
+		type="text/javascript"></script>
+	<!-- / jquery mobile (for touch events) -->
+	<script src="assets/javascripts/jquery/jquery.mobile.custom.min.js"
+		type="text/javascript"></script>
+	<!-- / jquery migrate (for compatibility with new jquery) [required] -->
+	<script src="assets/javascripts/jquery/jquery-migrate.min.js"
+		type="text/javascript"></script>
+	<!-- / jquery ui -->
+	<script src="assets/javascripts/jquery/jquery-ui.min.js"
+		type="text/javascript"></script>
+	<!-- / jQuery UI Touch Punch -->
+	<script
+		src="assets/javascripts/plugins/jquery_ui_touch_punch/jquery.ui.touch-punch.min.js"
+		type="text/javascript"></script>
+	<!-- / bootstrap [required] -->
+	<script src="assets/javascripts/bootstrap/bootstrap.js"
+		type="text/javascript"></script>
+	<!-- / modernizr -->
+	<script src="assets/javascripts/plugins/modernizr/modernizr.min.js"
+		type="text/javascript"></script>
+	<!-- / retina -->
+	<script src="assets/javascripts/plugins/retina/retina.js"
+		type="text/javascript"></script>
+	<!-- / theme file [required] -->
+	<script src="assets/javascripts/theme.js" type="text/javascript"></script>
+	<!-- / demo file [not required!] -->
+	<script src="assets/javascripts/demo.js" type="text/javascript"></script>
+    <script src="js/qqjBootstrapPage.js"></script>
+	<script src="js/common.js"></script>
+	
+	<script>
+	    $(document).ready(function(){
+	    	var array = parseUrl();	    	
+	    	var b = array[0];
+	    	
+	    	if ("admin" == b)
+	    	{	    		    	
+	    	}
+	    	else
+	    	{
+		    	var role = array[1];		    	
+		    	//管理员
+		    	if (role == 0)
+		    	{
+		    	}
+	    	}
+		});
+	    $("#add").click(function(){	
+    		save();
+		});
+	    
+	    function save()
+	    {
+			var card = $("#card").val();
+			var caruser = $("#caruser").val();
+			var tel = $("#tel").val();
+			if (isNull(card)||isNull(caruser))	
+			{					
+				alert("车牌车主不能为空");
+				return ;
+			}	
+			var data = {card:card,caruser:caruser,tel:tel};
+	    	$.ajax({
+				url:"saveCar.action",
+				type:"post",
+				data:data,
+				success:function(s){
+					if ("sucess" == s)
+					{
+						 var array = parseUrl();
+				 		 var b = array[0];	    	
+				     	 if ("admin" == b)
+				     	 {
+				     		 location.href="/carplat/qqindex.html";
+				     	 }
+				     	 else
+				         {
+				 	    	 location.href="/carplat/qqindex.html?"+b;
+				     	 }
+					}
+					else
+					{
+						alert(s);
+					}
+				}
+				});
+	    }
+    </script>
+</body></html>

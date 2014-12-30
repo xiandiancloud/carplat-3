@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>旅游商贸</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    	<link href="css/nav.css" rel="stylesheet"/>
+    	<link href="css/jBootsrapPage.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<nav class="nav">
+			<ul class="tabs course-nav-width clearfix">
+				<a href=""  id="cra"><li class="select">出入管理</li></a>
+				<a href="" id="cwa"><li class="select">车位信息</li></a>
+				<li class="">车辆管理</li>
+				<!-- <a href="" id="fka"><li class="select" >访客车辆</li></a> -->
+			</ul>
+		</nav> 
+		<div style="margin-top:30px"></div>
+		<div class="logobottom">
+				<table>
+				</table>
+				</div>
+				<ul class="nav nav-tabs">
+		         	<li class="active"><a href="" id="cya">常用车辆</a></li>
+			        <li id="fkli"><a href="" id="fka">访客车辆</a></li>
+			    </ul>
+		<div class="container">
+		   <div class="row">
+		      <div class="col-xs-12"><table class="table table-striped table-bordered table-hover" id="cartable"></table></div>   
+		      <div class="col-xs-12"><ul class="pagination"></ul></div>    
+		   </div>
+		</div>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bootstrap/js/jquery-1.9.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jBootstrapPage.js"></script>
+	<script src="js/common.js"></script>
+	
+	<script>
+	    $(document).ready(function(){
+	    	var array = parseUrl();	    	
+	    	var b = array[0];
+	    	
+	    	if ("admin" == b)
+	    	{	    
+	    		$("#cwa").attr("href","/carplat/qqparking.html");
+	    		$("#cra").attr("href","/carplat/qqindex.html");
+	    		$("#fka").attr("href","/carplat/qqtmpcar.html");
+	    		$("#cya").attr("href","/carplat/qqindex.html");		    	
+		    	initCar(1,0,"admin");
+	    	}
+	    	else
+	    	{
+	    		$("#cwa").attr("href","/carplat/qqparking.html?"+b);
+	    		$("#cra").attr("href","/carplat/qqindex.html");
+	    		$("#fka").attr("href","/carplat/qqtmpcar.html?"+b);
+		    	var role = array[1];		    	
+		    	//管理员
+		    	if (role == 0)
+		    	{
+		    	}
+		    	var username = array[2];
+		    	initCar(1,role,username);
+	    	}
+		});
+	    function createPage(pageSize, buttons, total) {
+            $(".pagination").jBootstrapPage({
+                pageSize : pageSize,
+                total : total,
+                maxPageButton:buttons,
+                onPageClicked: function(obj, pageIndex) {
+                  var pindex = pageIndex+1;
+                  initCar(pindex, 0,"管理员");
+                }
+            });
+        }
+	    function initCar(pindex,role,username)
+	    {
+	    	var data = {pindex:pindex,role:role,username:username};
+	    	//url:"getAllCar.action?pindex="+pindex+"&role="+role+"&username="+username,
+	    	$.ajax({
+				url:"getAllCar.action",
+				type:"post",
+				data:data,
+				success:function(s){
+					var a=eval("("+s+")");
+					if (a)
+					{
+						var t = '<tr><th>编号</th><th>车牌</th><th>车主</th><th>联系方式</th></tr>';
+						for(var i=0;i<a.rows.length;i++){
+								var b = a.rows[i];
+			    				t += '<tr><td>'+b.code+'</td><td>'+b.card+'</td><td>'+b.caruser+'</td><td>'+b.tel+'</td></tr>';
+						}							
+						$("#cartable").html(t);
+						
+						//分页
+						if (pindex == 1)
+						createPage(10,3,a.total);
+					}
+				}
+				});
+	    }
+    </script>
+</body></html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>旅游商贸</title>
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1, maximum-scale=1">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link href="css/nav.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="css/pagination.css" /> -->
+   <!--  <link rel="stylesheet" type="text/css" href="css/kkpager.css" /> -->
+    <link href="css/bootstrapfy.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<nav class="nav">
+		<ul class="tabs course-nav-width clearfix">
+			<li class="">出入管理</li>
+			<a href="" id="cwa"><li class="select">车位信息</li></a>
+			<a href="" id="clgl"><li class="select">车辆管理</li></a>
+			<!-- <a href="" id="fka"><li class="select" >访客车辆</li></a> -->
+		</ul>
+	</nav>
+	<div class="container">
+		<div class="contentTop">
+			<!-- <div class="contentTopLeft">
+						<div id="scrollWrap"> 
+							<ul id="scrollMsg"> 
+								<li><a class="msgtip" href="#">出入管理</a></li>
+							</ul>
+						</div>
+					</div> -->
+			<div class="clear"></div>
+		</div>
+		<div class="h10"></div>
+		<div class="position">
+			<!-- <div class="copyright"><h5>出入统计</h5></div> -->
+			<div class="logobottom">
+				<table style="margin:auto;"
+					class="table table-striped table-bordered table-hover">
+					<h5>选择日期</h5>
+					<tr class="table-bordered" style="height:52px;">
+						<td><div style="margin-top:6px;">开始时间</div></td>
+						<td>
+							<div class="input-append date dhltablediv" id="date" data-date=""
+								data-date-format="yyyy-mm-dd" style="margin:0px 5px;float:left;">
+								<input class="dhlspan" size="22" type="text" value=""
+									style="text-align:center;" onblur="return checkInputDate(this);">
+							</div>
+							<div style="position:absolute;margin-left:50px;margin-top:26px;width:200px;height:20px;"><span id="errorMessage" style="color:red;font-size:7px;"></span></div>
+						</td>
+						<!-- <div class="input-append date dhltablediv" style="margin-top:40px;background-color:red;width:100px;">
+							<span id="errorMessage" style="color:red;font-size:12px;"></span>
+							</div> -->
+						<!-- <td>&nbsp;至&nbsp;</td>
+					<td>
+						<div class="input-append date dhltablediv" id="outdate" data-date="" data-date-format="yyyy-mm-dd">
+						    <input class="dhlspan" size="16" type="text"  style="width:40px;" value="" readonly>
+						    <span class="add-on"><i class="icon-calendar"></i></span>
+						</div>
+					</td>
+					<td>&nbsp;&nbsp;</td> -->
+						<!-- <td>
+					<button id="signalbutton" class="btn btn-warning"><i class="icon-signal"></i>统计</button>								
+					</td> -->
+					</tr>
+					<tr class="table-bordered" style="height:52px;">
+						<td><div style="margin-top:6px;">结束时间</div></td>
+						<td>
+							<div class="input-append date dhltablediv" id="outdate"
+								data-date="" data-date-format="yyyy-mm-dd"
+								style="margin:0px 5px;float:left;">
+								<input class="dhlspan" size="22" type="text" value=""
+									style="text-align:center;" onblur=" return checkEndDate(this);">
+								<!--  <span class="add-on"><i class="icon-calendar"></i></span> -->
+							</div>
+							<!-- <div class="input-append date dhltablediv" style="margin-top:10px;margin-left:5px;float:left;">
+							<span id="errorEndMessage" style="color:red;font-size:12px;"></span> -->
+							<div style="position:absolute;margin:26px auto;width:200px;height:20px;"><span id="errorEndMessage" style="color:red;font-size:7px;"></span></div>
+						</td>
+						<!-- <td>&nbsp;&nbsp;</td> -->
+					</tr>
+					<!-- <tr>
+					<td>&nbsp;&nbsp;</td>
+					<td style="width:auto;margin:atuo;align:center;">
+					<button id="signalbutton" class="btn btn-warning"><i class="icon-signal"></i>统计车辆</button>								
+					</td>
+					</tr> -->
+				</table>
+				<div style="width:100px;height:40px;margin:10px auto;">
+					<button id="signalbutton" class="btn btn-warning">
+						<i class="icon-signal"></i>统计车辆
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- <div style="width:10px;"></div>	 -->
+		<!-- <hr style="border:1px solid;color:#61c0ec; width:100%; margin-top:20px,auto;"/> -->
+		<div class="copyright">
+			<h5>统计数据</h5>
+		</div>
+		<table class="table table-striped table-bordered table-hover"
+			id="signal"></table>
+		<div class="clear"></div>
+		<div class="copyright">
+			<h5>出入详情</h5>
+		</div>
+		<!-- <hr style="border:1px solid;color:#61c0ec; width:100%; margin-top:20px,auto;"/>	 -->
+		<div class="clear"></div>
+		<ul class="nav nav-tabs" id="litab">
+			<li class="active"><a href="javascript:void(0)">进入</a></li>
+			<li><a href="javascript:void(0)">离开</a></li>
+		</ul>
+		<table class="table table-striped table-bordered table-hover"
+			id="cartable"></table>
+		<div class="col-xs-12">
+			<!-- <ul id="pagination-demo-v1_1" class="pagination-sm"></ul> -->
+			<!-- <ul class="pagination" id="pagination"></ul> -->
+			     <!-- <div id="content">
+            <h1>jQuery Pagination Plugin Demo</h1>
+            <div id="Pagination" class="pagination">
+            </div>
+            <br style="clear:both;" />
+            <dl id="Searchresult">
+                <dt>Search Results will be inserted here ...</dt>
+            </dl>
+            <h3>Config form for pagination parameters</h3>
+            This form is just to demonstrate the whole range of options and display styles.
+            <form name="paginationoptions" style="display:none;">
+                <p><label for="items_per_page">Number of items per page</label><input type="text" value="10" name="items_per_page" id="items_per_page" class="numeric"/></p>
+                <p><label for="num_display_entries">Number of pagination links shown</label><input type="text" value="3" name="num_display_entries" id="num_display_entries" class="numeric"/></p>
+                <p><label for="num">Number of start and end points</label><input type="text" value="0" name="num_edge_entries" id="num_edge_entries" class="numeric"/></p>
+                <p><label for="prev_text">"Previous" label</label><input type="text" value="上一页" name="prev_text" id="prev_text"/></p>
+                <p><label for="next_text">"Next" label</label><input type="text" value="下一页" name="next_text" id="next_text"/></p>
+                <input type="button" id="setoptions" value="Set options" />
+            </form>
+            <div id="footer">
+			We have this from <a href="http://www.d-scribe.de/">describe europe Ltd.</a>. They own the Copyright &copy;
+            </div>
+        </div> -->
+            </div>
+		</div>
+
+	<script src="bootstrap/js/jquery-1.9.1.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/jBootstrapPage.js"></script>
+	<script src="js/fineuploader.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/common.js"></script>
+	 <!-- <script src="js/jquery-2.0.3.min.js" type="text/javascript"></script> -->
+    <script src="js/bootstrap.js" type="text/javascript"></script> 
+    <script src="js/jquery.twbsPagination.js" type="text/javascript"></script>
+    <script src="js/zzsc.js" type="text/javascript"></script>
+	
+	
+	
+	<script>
+	    $(document).ready(function(){
+			var date = CurentTime();
+			$('#date').attr("data-date",date);
+			$('#date input').attr("value",date);
+			$('#date').datepicker();		
+			
+			$('#outdate').attr("data-date",date);
+			$('#outdate input').attr("value",date);
+			$('#outdate').datepicker();	
+			
+			var array = parseUrl();
+	    	var b = array[0];
+	    	
+	    	if ("admin" == b)
+	    	{	    	
+		    	$("#logo").attr("href","/carplat/");
+	    		$("#crli").attr("href","/carplat/inout.html");
+	    		$("#clli").attr("href","/carplat/");	 	    
+	    		$("#dcli").attr("href","/carplat/parking.html");
+	    		$("#ledli").attr("href","/carplat/led.html");
+		    	$("#username").html("管理员");	    	
+		    	$("#userimg").attr("src","images/user.png");
+		    	
+		    	$("#clgl").attr("href","/carplat/qqinout.html");
+	    		$("#cwa").attr("href","/carplat/qqparking.html");
+	    	}
+	    	else
+	    	{
+		    	var role = array[1];		    	
+		    	$("#logo").attr("href","/carplat/index.html?"+b);
+	    		$("#clgl").attr("href","/carplat/qqinout.html?"+b);
+	    		$("#clli").attr("href","/carplat/index.html?"+b);	
+	    		$("#dcli").attr("href","/carplat/parking.html?"+b);
+	    		$("#ledli").attr("href","/carplat/led.html?"+b);
+	    		
+	    		$("#cya").attr("href","/carplat/qqindex.html?"+b);
+	    		$("#fka").attr("href","/carplat/qqtmpcar.html");
+	    		$("#cwa").attr("href","/carplat/qqparking.html?"+b);
+	    		if (role == 0)
+		    	{
+		    		$("#crgl").show();
+		    	}
+		    	else// if (role == 1)
+		    	{		    		
+		    		$("#crgl").hide();
+		    	}   
+		    	//管理员
+		    	/* if (role == 1)//教师
+		    	{	    		
+		    		$("#signalcontent").hide();
+					$("#footer").hide();
+		    	}	
+		    	else if (role == 2)
+		    	{
+		    		$("#signalcontent").hide();
+					$("#footer").hide();	
+					$("#clgl").hide();
+		    	} */
+		    	var username = array[2];
+		    	$("#username").html(username);	    	
+		    	$("#userimg").attr("src",array[3]);
+	    	}
+	    	initCar(1);
+			initCount();
+			$("#signalbutton").click(function(){
+				var flag = checkdate();
+				if (flag)
+				{
+					initCar(1);
+					initCount();	
+				}				
+			});
+			
+			$("#litab li").click(function(){
+				$(".active").removeClass("active");
+				$(this).addClass("active");
+				initCar(1);
+			});
+              /* var optInit = getOptionsFromForm();
+              $("#Pagination").pagination(100, optInit);  */
+		});
+		
+            function pageselectCallback(page_index, jq){
+            	var pindex = page_index+1;
+                  initCar(pindex);
+            }
+            function getOptionsFromForm(){
+                var opt = {callback: pageselectCallback};
+                $("input:text").each(function(){
+                    opt[this.name] = this.className.match(/numeric/) ? parseInt(this.value) : this.value;
+                });
+                var htmlspecialchars ={ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;"};
+                $.each(htmlspecialchars, function(k,v){
+                    opt.prev_text = opt.prev_text.replace(k,v);
+                    opt.next_text = opt.next_text.replace(k,v);
+                });
+                return opt;
+            }
+		
+	    function checkdate()
+	    {   
+	    	var indate = $('#date input').val();
+	    	var outdate = $('#outdate input').val();
+	        var sDate = new Date(indate.replace(/\-/g, "\/"));
+	     	var eDate = new Date(outdate.replace(/\-/g, "\/"));
+	    	if(sDate > eDate)
+	     	{
+	     	 	alert("结束日期不能小于开始日期");
+	      		return false;
+	     	}
+	     	return true;
+	    }
+	    function queryHandle(){  
+	    	/* initCar(1); */
+			initCount();
+	    }  
+	    function initCount()
+	    {
+	    	var indate = $('#date input').val();
+	    	var outdate = $('#outdate input').val();
+	    	$.ajax({				
+				url:"carInOutCount.action?indate="+indate+"&outdate="+outdate,
+				type:"post",
+				success:function(s){
+					var a=eval("("+s+")");
+					if (a)
+					{						
+						var t = '<tr><th>前门入</th><th>后门入</th><th>前门出</th><th>后门出</th></tr>';
+						for(var i=0;i<a.rows.length;i++){
+								var b = a.rows[i];
+			    				t += '<tr><td>'+b.count2+'</td><td>'+b.count3+'</td><td>'+b.count4+'</td><td>'+b.count5+'</td></tr>';
+							}							
+						$("#signal").html(t);		
+					}
+				}
+				});
+	    }
+	    function CurentTime()
+	    { 
+	        var now = new Date();
+	        var year = now.getFullYear();       //年
+	        var month = now.getMonth() + 1;     //月
+	        var day = now.getDate();            //日
+	        //var hh = now.getHours();            //时
+	        //var mm = now.getMinutes();          //分
+	        var clock= year + "-";
+	        if(month < 10)
+	            clock += "0";
+	        clock += month + "-";
+	        if(day < 10)
+	            clock += "0";
+	        clock += day;
+	        //clock += year;
+	        /*if(hh < 10)
+	            clock += "0";
+	        clock += hh + ":";
+	        if (mm < 10) clock += '0'; 
+	        clock += mm;*/ 
+	        return(clock); 
+	    } 
+	   /* function createPage(pageSize, buttons, total) {
+            $(".pagination").jBootstrapPage({
+                pageSize : pageSize,
+                total : total,
+                maxPageButton:buttons,
+                onPageClicked: function(obj, pageIndex) {
+                  var pindex = pageIndex+1;
+                  initCar(pindex);
+                }
+            });
+        }*/
+      
+       /*  function createHtml(totalPages){
+           if(page_size!=data.totalPag)
+          	{  
+   				$("#pagination-demo-v1_1").html('<ul id="sss" class="pagination-sm"></ul>');  
+			}   
+        	 alert(totalpages); 
+        	
+            $('#pagination-demo-v1_1').twbsPagination({
+        	totalPages: totalPages,
+        	 onPageClick: function(obj, pageIndex) {
+            		initCar(pageIndex);
+                },
+        	version: '1.1'
+   			 });
+        } */
+        
+        
+        
+	    function initCar(pindex)
+	    {
+	    	var indate = $('#date input').val();
+	    	var outdate = $('#outdate input').val();
+	    	//alert(indate);
+	    	var litext = $(".active a").html();
+	    	var status = 0;
+	    	if (litext == '离开')
+    		{
+	    		status = 1;
+    		}
+	    	$.ajax({				
+				url:"qqcarInOut.action?indate="+indate+"&status="+status+"&outdate="+outdate,
+				type:"post",
+				success:function(s){
+					var a=eval("("+s+")");
+					if (a)
+					{						
+						var t = '<tr><th>车牌</th><th>进入时间/进入位置</th><th>车主</th></tr>';
+						if (status == 1)
+						{
+							t = '<tr><th>车牌</th><th>离开时间/离开位置</th><th>车主</th></tr>';
+						}
+						for(var i=0;i<a.rows.length;i++){
+								var b = a.rows[i];
+			    				t += '<tr><td>'+b.card+'</td><td>'+b.indate.substr(5)+'&nbsp;'+'&nbsp;'+'&nbsp;'+b.status+'</td><td>'+b.caruser+'</td></tr>';
+							}
+						/* 	alert(t); */
+						$("#cartable").html(t);
+
+					}
+				}
+				});
+	    }
+    </script>  
+	<script type="text/javascript">
+	function checkInputDate(obj){
+	   var strDate=obj.value;
+	   var re =/^(\d{4})-(\d{2})-(\d{2})$/; 
+	   	if(!re.test(strDate))
+  	{ 
+  		document.getElementById("errorMessage").innerHTML = "格式为:2014-12-01";
+  		obj.focus();
+  		
+	  	return false;
+ 	}
+ 	
+  		if(re.test(strDate))
+   {
+   		 //判断日期格式符合YYYY-MM-DD标准  
+   		document.getElementById("errorMessage").innerHTML='';
+	    var   dateElement=new Date(RegExp.$1,parseInt(RegExp.$2,10)-1,RegExp.$3); 
+	    if(!((dateElement.getFullYear()==parseInt(RegExp.$1))&&((dateElement.getMonth()+1)==parseInt(RegExp.$2,10))&&(dateElement.getDate()==parseInt(RegExp.$3))))//判断日期逻辑 
+     { 
+       	document.getElementById("errorMessage").innerHTML = "您输入的日期不正确！"; 
+       	obj.focus(); 
+       	return false;
+      } 
+   }
+   if(re.test(strDate))
+   {
+   		 //判断日期格式符合YYYY-MM-DD标准  
+	    var   dateElement=new Date(RegExp.$1,parseInt(RegExp.$2,10)-1,RegExp.$3); 
+	    if(((dateElement.getFullYear()==parseInt(RegExp.$1))&&((dateElement.getMonth()+1)==parseInt(RegExp.$2,10))&&(dateElement.getDate()==parseInt(RegExp.$3))))//判断日期逻辑 
+     { 
+     	document.getElementById("errorMessage").hide();
+       	return true;
+      } 
+   }
+ }
+ 
+ 
+ function checkEndDate(obj){
+	   var strDate=obj.value;
+	   var re =/^(\d{4})-(\d{2})-(\d{2})$/; 
+	   	if(!re.test(strDate))
+  	{ 
+  		document.getElementById("errorEndMessage").innerHTML = "格式为:2014-12-01";
+  		obj.focus();
+  		
+	  	return false;
+ 	}
+  		if(re.test(strDate))
+   {
+   		 //判断日期格式符合YYYY-MM-DD标准  
+   		document.getElementById("errorEndMessage").innerHTML='';
+	    var   dateElement=new Date(RegExp.$1,parseInt(RegExp.$2,10)-1,RegExp.$3); 
+	    if(!((dateElement.getFullYear()==parseInt(RegExp.$1))&&((dateElement.getMonth()+1)==parseInt(RegExp.$2,10))&&(dateElement.getDate()==parseInt(RegExp.$3))))//判断日期逻辑 
+     { 
+       	document.getElementById("errorEndMessage").innerHTML = "您输入的日期不正确！"; 
+       	obj.focus(); 
+       	return false;
+      } 
+   }
+   if(re.test(strDate))
+   {
+   		 //判断日期格式符合YYYY-MM-DD标准  
+	    var   dateElement=new Date(RegExp.$1,parseInt(RegExp.$2,10)-1,RegExp.$3); 
+	    if(((dateElement.getFullYear()==parseInt(RegExp.$1))&&((dateElement.getMonth()+1)==parseInt(RegExp.$2,10))&&(dateElement.getDate()==parseInt(RegExp.$3))))//判断日期逻辑 
+     { 
+     	document.getElementById("errorEndMessage").hide();
+       	return true;
+      } 
+   }
+ }
+	</script>
+	
+
+	
+</body>
+</html>

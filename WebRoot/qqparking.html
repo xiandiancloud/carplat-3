@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>旅游商贸</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    	<link href="css/nav.css" rel="stylesheet"/>
+    	<link href="css/jBootsrapPage.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<nav class="nav">
+			<ul class="tabs course-nav-width clearfix">
+				
+				<a href="" id="cra"><li class="select">出入管理</li></a>
+				<li class="">车位信息</li>
+				<a href="" id="clgl"><li class="select">车辆管理</li></a>
+				<!-- <a href="" id="fka"><li class="select">访客车辆</li></a> -->
+				
+			</ul>
+		</nav> 
+		<div style="margin-top:30px"></div>
+ 		<div class="container-fluid">
+		   <div class="row-fluid">
+		      <div class="col-xs-12"><table class="table table-bordered table-hover" id="signal"></table></div>
+		      <div class="col-xs-12"><div id="front"></div></div>
+		      <div class="h10"></div>
+		      <!-- <div class="col-xs-12">
+		      <a href="/carplat/parking.html" class="btn btn-warning btn-block btn-large">点击查看停车详情</a>
+		      </div> -->
+		      <!-- <div class="h10"></div><div class="h10"></div>
+		      <div class="col-xs-12"><table class="table table-bordered table-hover" id="front1"></table></div>
+		      <div class="col-xs-12"><table class="table table-bordered table-hover" id="front2"></table></div>
+		      <div class="col-xs-12"><table class="table table-bordered table-hover" id="front3"></table></div> -->
+		   </div>
+		</div> 
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bootstrap/js/jquery-1.9.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jBootstrapPage.js"></script>
+	<script src="js/common.js"></script>
+	
+	<script>
+	    $(document).ready(function(){
+	    	var array = parseUrl();	    	
+	    	var b = array[0];
+	    	if ("admin" == b)
+	    	{	    
+	    		$("#clgl").attr("href","/carplat/qqinout.html");
+	    		$("#cra").attr("href","/carplat/qqindex.html");
+	    		/* $("#cla").attr("href","/carplat/qqtmpcar.html"); */
+	    	}
+	    	else
+	    	{
+	    		
+	    		/* $("#cya").attr("href","/carplat/qqinout.html?"+b); */
+	    		$("#cra").attr("href","/carplat/qqindex.html?"+b);
+	    		$("#clgl").attr("href","/carplat/qqinout.html?"+b);
+	    		/* $("#fka").attr("href","/carplat/qqtmpcar.html?"+b); */
+		    	var role = array[1];		    	
+		    	//管理员
+		    	if (role == 0)
+		    	{
+		    	}
+	    	}
+	    	
+	    	initcarcount();
+	    	initC();
+		});
+	    function initcarcount()
+	    {
+	    	$.ajax({				
+				url:"getAllPark.action",
+				type:"post",
+				success:function(s){
+					var a=eval("("+s+")");
+					if (a)
+					{						
+						var t = '<tr style="background:#ecebea"><th>停车场位置</th><th>车位总数</th><th>剩余车位</th></tr>';
+						for(var i=0;i<a.rows.length;i++){
+							var b = a.rows[i];
+		    				t += '<tr><td>'+b.pos+'</td><td>'+b.allcount+'</td><td>'+b.left+'</td></tr>';
+							}				
+						$("#signal").html(t);		
+					}
+				}
+				});
+	    }
+	    function initC()
+		{
+			//initCount(1);
+			//initCount(2);
+			initCount(3);
+		}
+	    function initCount(pos)
+	    {
+	    	$.ajax({				
+				url:"getLed.action?pos="+pos,
+				type:"post",
+				success:function(s){
+					var a=eval("("+s+")");
+					if (a)
+					{		
+						/* var tt = '显示屏';
+						if (pos == 1)
+						{
+							tt = '前校门显示屏';
+						}
+						else if (pos == 2)
+						{
+							tt = '后校门显示屏';
+						}
+						else if (pos == 3)
+						{
+							tt = '地下显示屏';
+						} */
+						var t = '地下车位信息：';
+						for(var i=3;i<a.rows.length;i++){
+								var b = a.rows[i];
+								var c = b.con;
+								if (c)
+								{
+									t += c;
+								}
+								else
+								{
+									t += '&nbsp;';
+								}
+								t += '&nbsp;';
+							}				
+						//$("#front"+pos).html(t);	
+						$("#front").html(t);	
+					}
+				}
+				});
+	    }
+    </script>
+</body></html>

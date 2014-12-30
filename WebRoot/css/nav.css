@@ -1,0 +1,41 @@
+.nav {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	/* border-top:1px solid #61c0ec; */
+}
+
+.nav ul {
+	list-style-type: none;
+	padding: 0;
+	text-align: center;
+	margin: 0;
+}
+
+.nav ul li {
+	float: left;
+	height: 3.5rem;
+	line-height: 3.5rem;
+	background-color: #61c0ec;
+	color: #fff;
+}
+
+.course-nav-width li {
+	width: 33.333333%;
+}
+
+.repairs-nav-width li {
+	width: 33.333333%;
+}
+
+.nav ul li:last-child {
+	border-right: none;
+}
+
+.nav ul li.select {
+	border-bottom: none;
+	background-color: #fff;
+	color: #61c0ec;
+}
