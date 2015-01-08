@@ -108,31 +108,42 @@
             	
             	if((currButtonNum != currPage+1 || maxPage > showPage) && currButtonNum >= middle) {
             		//显示后面2个按钮
+            		/*var startPages = currPage - offsetRight;
+            		var endPages = currPage + middle;*/
             		var startPages = currPage - middle + offsetRight;
-            		var endPages = currPage + middle + offsetRight;
-            		endPages = endPages > maxPage ? maxPage : endPages;
+            		var endPages = currPage +middle + offsetRight;
+            		endPages = endPages >= maxPage ? maxPage : endPages;
             		
-            		if(endPages <= c.maxPageButton) endPages = c.maxPageButton;
+            		if(endPages <c.maxPageButton) endPages = c.maxPageButton;
             		
-            		if(endPages - startPages >= c.maxPageButton) {
-            			endPages -= 1;
+            		if(endPages - startPages > c.maxPageButton) {
+            			var d = endPages - startPages - c.maxPageButton;
+            			endPages -= d;
             		} 
             		
             		if(endPages == maxPage)endPages++;
+            		
             		if(endPages - startPages < c.maxPageButton) {
             			var d = c.maxPageButton - (endPages - startPages); 
             			startPages -= d;
             		}
+            		
             		var pNum = 0;
             		var html = '';
             		for(var index = startPages; index < endPages; index++) {
             			pNum++;
             			html += '<li class="page" pNum="'+pNum+'"><a href="#" page="'+index+'">'+index+'</a></li>';
             		}
+            		
             		$this.find('li.page').remove();
             		$this.find('li:nth-child(2)').after(html);
+            		
             		bindPages();
             	}
+            	
+            	
+            	
+            	
             	/*if((currButtonNum != currPage+1 || maxPage > showPage) && currButtonNum > middle) {
             		var startPages = currPage - middle + offsetRight;
             		
